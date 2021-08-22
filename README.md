@@ -6,7 +6,7 @@ Extension for Visual Studio code to easily edit the decompiled scripts from the 
 
 The only working feature at the moment is some basic syntax highlighting. There is the idea of including error checking and auto-completion, but no active plans to support it in a near future.
 
-\!\[syntax highlight preview\]\(images/preview.png\)
+![syntax highlight preview](images/preview.png)
 
 ## Known Issues
 

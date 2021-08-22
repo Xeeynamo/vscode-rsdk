@@ -1,8 +1,10 @@
 {
     "name": "rsdk-script",
     "displayName": "RSDK Script",
-    "description": "RSDK script highlighting",
-    "version": "0.0.1",
+    "description": "RSDK script syntax highlighting",
+    "version": "0.1.0",
+    "publisher": "xeeynamo",
+    "repository": "https://github.com/xeeynamo/vscode-rsdk",
     "engines": {
         "vscode": "^1.59.0"
     },
