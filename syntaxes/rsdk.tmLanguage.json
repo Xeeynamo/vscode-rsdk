@@ -136,9 +136,19 @@
 									"name": "keyword.control.$1.rsdk"
 								}
 							},
-							"patterns": [{
-								"include": "$base"
-							}]
+							"patterns": [
+								{
+									"match": "\\b(case)\\b",
+									"captures": {
+										"0": {
+											"name": "keyword.control.$1.rsdk"
+										}
+									}
+								},
+								{
+									"include": "$base"
+								}
+							]
 						},
 						{
 							"match": "\\b(endswitch)\\b",

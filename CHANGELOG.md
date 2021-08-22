@@ -6,6 +6,8 @@ The format used in this document follows the [Keep a Changelog](http://keepachan
 
 ## [Unreleased]
 
+- Fix syntax highlighting for consecutive switch cases
+
 ## [0.1.0] - 2021-08-22
 
 - Initial release
