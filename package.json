@@ -1,0 +1,25 @@
+{
+    "name": "rsdk-script",
+    "displayName": "RSDK Script",
+    "description": "RSDK script highlighting",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.59.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "rsdk",
+            "aliases": ["RSDK", "rsdk"],
+            "extensions": [".txt", ".srsdk"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "rsdk",
+            "scopeName": "source.rsdk",
+            "path": "./syntaxes/rsdk.tmLanguage.json"
+        }]
+    }
+}

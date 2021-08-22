@@ -1,0 +1,386 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "RSDK",
+	"scopeName": "source.rsdk",
+	"patterns": [
+		{
+			"include": "#invalid-keywords"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#flow-control"
+		},
+		{
+			"include": "#declaration"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#strings"
+		},
+        {
+			"include": "#preprocessor-rule-conditional"
+        },
+		{
+			"include": "#preprocessor-alias-definition"
+		},
+		{
+			"include": "#preprocessor-function-definition"
+		},
+		{
+			"include": "#function-call"
+		},
+        {
+            "match": ",",
+            "name": "punctuation.separator.delimiter.rsdk"
+        }
+	],
+	"repository": {
+		"invalid-keywords": {
+			"match": "\\b(endfunction|endsub|else|endif|case|break|endswitch|loop)\\b",
+			"captures": {
+				"0": {
+					"name": "invalid.illegal.stray-$1.c"
+				}
+			}
+		},
+		"numbers": {
+			"match": "(?<!\\w)\\.?\\d(?:(?:[0-9a-zA-Z_\\.]|')|(?<=[eEpP])[+-])*",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"begin": "(?=.)",
+							"end": "$",
+							"patterns": [
+								{
+									"match": "(\\G(?=[0-9.]))([0-9](?:[0-9])*)$",
+									"captures": {
+										"2": {
+											"name": "constant.numeric.decimal.rsdk",
+											"patterns": [
+												{
+													"match": "(?<=[0-9a-fA-F])'(?=[0-9a-fA-F])",
+													"name": "punctuation.separator.constant.numeric"
+												}
+											]
+										}
+									}
+								},
+								{
+									"match": "(?:(?:[0-9a-zA-Z_\\.]|')|(?<=[eEpP])[+-])+",
+									"name": "invalid.illegal.constant.numeric"
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		"flow-control": {
+			"patterns": [
+				{
+					"begin": "\\b(if)\\b",
+					"beginCaptures": {
+						"0": {
+							"name": "keyword.control.$1.rsdk"
+						}
+					},
+					"end": "\\b(endif)\\b",
+					"endCaptures": {
+						"0": {
+							"name": "keyword.control.$1.rsdk"
+						}
+					},
+					"patterns": [
+						{
+							"match": "\\b(else)\\b",
+							"name": "keyword.control.$1.rsdk"
+						},
+						{
+							"match": "\\b(endif)\\b",
+							"name": "keyword.control.$1.rsdk"
+						},
+						{
+							"include": "$base"
+						}
+					]
+				},
+				{
+					"begin": "\\b(switch)\\b",
+					"beginCaptures": {
+						"0": {
+							"name": "keyword.control.$1.rsdk"
+						}
+					},
+					"end": "\\b(endswitch)\\b",
+					"endCaptures": {
+						"0": {
+							"name": "keyword.control.$1.rsdk"
+						}
+					},
+					"patterns": [
+						{
+							"begin": "\\b(case)\\b",
+							"beginCaptures": {
+								"0": {
+									"name": "keyword.control.$1.rsdk"
+								}
+							},
+							"end": "\\b(break)\\b",
+							"endCaptures": {
+								"0": {
+									"name": "keyword.control.$1.rsdk"
+								}
+							},
+							"patterns": [{
+								"include": "$base"
+							}]
+						},
+						{
+							"match": "\\b(endswitch)\\b",
+							"name": "keyword.control.$1.rsdk"
+						},
+						{
+							"include": "$base"
+						}
+					]
+				},
+				{
+					"begin": "\\b(while)\\b",
+					"beginCaptures": {
+						"0": {
+							"name": "keyword.control.$1.rsdk"
+						}
+					},
+					"end": "\\b(loop)\\b",
+					"endCaptures": {
+						"0": {
+							"name": "keyword.control.$1.rsdk"
+						}
+					},
+					"patterns": [
+						{
+							"include": "$base"
+						}
+					]
+				}
+			]
+		},
+		"declaration": {
+			"patterns": [
+				{
+					"begin": "\\b(function)\\b",
+					"beginCaptures": {
+						"0": {
+							"name": "storage.type.$1.rsdk"
+						}
+					},
+					"end": "\\b(endfunction)\\b",
+					"endCaptures": {
+						"0": {
+							"name": "storage.type.$1.rsdk"
+						}
+					},
+					"patterns": [
+						{
+							"include": "$base"
+						}
+					]
+				},
+				{
+					"begin": "\\b(sub)\\b",
+					"beginCaptures": {
+						"0": {
+							"name": "storage.type.$1.rsdk"
+						}
+					},
+					"end": "\\b(endsub)\\b",
+					"endCaptures": {
+						"0": {
+							"name": "storage.type.$1.rsdk"
+						}
+					},
+					"patterns": [
+						{
+							"include": "$base"
+						}
+					]
+				}
+			]
+		},
+		"comments": {
+			"patterns": [{
+				"name": "comment.line.double-slash.rsdk",
+				"begin": "(\\/\\/)",
+				"end": "(?=\\n)"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.rsdk",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.rsdk",
+					"match": "\\\\."
+				}
+			]
+		},
+		"preprocessor-rule-conditional": {
+			"patterns": [
+				{
+					"begin": "^\\s*((#)\\s*(platform\\b\\:))\\s*",
+					"beginCaptures": {
+                        "0": {
+                            "name": "meta.preprocessor.rsdk"
+                        },
+                        "1": {
+                            "name": "keyword.control.directive.conditional.rsdk"
+                        },
+                        "2": {
+                            "name": "punctuation.definition.directive.rsdk"
+                        }
+					},
+                    "end": "^\\s*((#)\\s*endplatform\\b)",
+                    "endCaptures": {
+                        "0": {
+                            "name": "meta.preprocessor.rsdk"
+                        },
+                        "1": {
+                            "name": "keyword.control.directive.conditional.rsdk"
+                        },
+                        "2": {
+                            "name": "punctuation.definition.directive.rsdk"
+                        }
+                    },
+					"patterns": [
+						{
+							"match": "Standard|Mobile|Use_Haptics",
+							"name": "entity.name.function.preprocessor.rsdk"
+						},
+						{
+							"include": "$base"
+						}
+					]
+				},
+                {
+                    "match": "^\\s*#\\s*(endplatform)\\b",
+                    "captures": {
+                        "0": {
+                            "name": "invalid.illegal.stray-$1.c"
+                        }
+                    }
+                }
+			]
+		},
+		"preprocessor-alias-definition": {
+			"patterns": [
+				{
+					"match": "^\\s*((#)\\s*(alias))\\b\\s*",
+					"captures": {
+                        "0": {
+                            "name": "meta.preprocessor.rsdk"
+                        },
+                        "1": {
+                            "name": "keyword.control.directive.alias.rsdk"
+                        },
+                        "2": {
+                            "name": "punctuation.definition.directive.alias.rsdk"
+                        }
+					},
+					"patterns": [ ]
+				}
+			]
+		},
+		"preprocessor-function-definition": {
+			"patterns": [
+				{
+					"match": "^\\s*((#)\\s*(function))\\b\\s*",
+					"captures": {
+                        "0": {
+                            "name": "meta.preprocessor.rsdk"
+                        },
+                        "1": {
+                            "name": "keyword.control.directive.function.rsdk"
+                        },
+                        "2": {
+                            "name": "punctuation.definition.directive.function.rsdk"
+                        }
+					},
+					"patterns": [ ]
+				}
+			]
+		},
+        "function-call": {
+            "begin": "(?x)\n(?!(?:if|else|endif|while|switch|case|break|endswitch|function|endfunction|sub|endsub)\\s*\\()\n(?=\n(?:[A-Za-z_][A-Za-z0-9_]*+|::)++\\s*\\(  # actual name\n|\n(?:(?<=operator)(?:[-*&<>=+!]+|\\(\\)|\\[\\]))\\s*\\(\n)",
+            "end": "(?<=\\))(?!\\w)",
+            "name": "meta.function-call.rsdk",
+            "patterns": [
+                {
+                    "include": "#function-call-innards"
+                }
+            ]
+        },
+        "function-call-innards": {
+            "patterns": [
+                {
+                    "include": "#comments"
+                },
+                {
+                    "include": "#strings"
+                },
+                {
+                    "include": "#numbers"
+                },
+                {
+                    "include": "#operators"
+                },
+                {
+                    "begin": "(?x)\n(?!(?:if|else|endif|while|switch|case|break|endswitch|function|endfunction|sub|endsub)\\s*\\()\n(\n(?:[A-Za-z_][A-Za-z0-9_]*+|::)++  # actual name\n|\n(?:(?<=operator)(?:[-*&<>=+!]+|\\(\\)|\\[\\]))\n)\n\\s*(\\()",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "entity.name.function.rsdk"
+                        },
+                        "2": {
+                            "name": "punctuation.section.arguments.begin.bracket.round.rsdk"
+                        }
+                    },
+                    "end": "\\)",
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.section.arguments.end.bracket.round.rsdk"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#function-call-innards"
+                        }
+                    ]
+                },
+                {
+                    "begin": "\\(",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.section.parens.begin.bracket.round.rsdk"
+                        }
+                    },
+                    "end": "\\)",
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.section.parens.end.bracket.round.rsdk"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#function-call-innards"
+                        }
+                    ]
+                }
+            ]
+        }
+	}
+}
