@@ -2,14 +2,26 @@
 	"name": "rsdk-script",
 	"displayName": "RSDK Script",
 	"description": "RSDK script syntax highlighting",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"publisher": "xeeynamo",
 	"repository": "https://github.com/xeeynamo/vscode-rsdk",
+	"license": "Apache-2.0",
+	"icon": "icon.png",
 	"engines": {
 		"vscode": "^1.59.0"
 	},
 	"categories": [
 		"Programming Languages"
+	],
+	"keywords": [
+		"RSDK",
+		"Retro Engine",
+		"Retro SDK",
+		"Retro Software Development Kit",
+		"script",
+		"sonic",
+		"disassembly",
+		"Christian Whitehead"
 	],
 	"contributes": {
 		"languages": [
