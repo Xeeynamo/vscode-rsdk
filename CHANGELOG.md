@@ -6,6 +6,10 @@ The format used in this document follows the [Keep a Changelog](http://keepachan
 
 ## [Unreleased]
 
+## [0.2.1] - 2021-08-28
+
+- Add early support for RSDKv4 (also named RSDKvB)
+
 ## [0.2.0] - 2021-08-23
 
 - Fix syntax highlighting for consecutive switch cases

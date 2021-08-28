@@ -40,7 +40,7 @@
 	],
 	"repository": {
 		"invalid-keywords": {
-			"match": "\\b(endfunction|endsub|else|endif|case|break|endswitch|loop)\\b",
+			"match": "\\b(end|endfunction|endsub|else|endif|case|break|endswitch|loop)\\b",
 			"captures": {
 				"0": {
 					"name": "invalid.illegal.stray-$1.rsdk"
@@ -130,7 +130,7 @@
 							"name": "keyword.control.$1.rsdk"
 						}
 					},
-					"end": "\\b(endif)\\b",
+					"end": "\\b(endif|end if)\\b",
 					"endCaptures": {
 						"0": {
 							"name": "keyword.control.$1.rsdk"
@@ -142,7 +142,7 @@
 							"name": "keyword.control.$1.rsdk"
 						},
 						{
-							"match": "\\b(endif)\\b",
+							"match": "\\b(endif|end if)\\b",
 							"name": "keyword.control.$1.rsdk"
 						},
 						{
@@ -157,7 +157,7 @@
 							"name": "keyword.control.$1.rsdk"
 						}
 					},
-					"end": "\\b(endswitch)\\b",
+					"end": "\\b(endswitch|end switch)\\b",
 					"endCaptures": {
 						"0": {
 							"name": "keyword.control.$1.rsdk"
@@ -192,7 +192,7 @@
 							]
 						},
 						{
-							"match": "\\b(endswitch)\\b",
+							"match": "\\b(endswitch|end switch)\\b",
 							"name": "keyword.control.$1.rsdk"
 						},
 						{
@@ -230,7 +230,7 @@
 							"name": "storage.type.$1.rsdk"
 						}
 					},
-					"end": "\\b(endfunction)\\b",
+					"end": "\\b(endfunction|end function)\\b",
 					"endCaptures": {
 						"0": {
 							"name": "storage.type.$1.rsdk"
@@ -249,7 +249,26 @@
 							"name": "storage.type.$1.rsdk"
 						}
 					},
-					"end": "\\b(endsub)\\b",
+					"end": "\\b(endsub|end sub)\\b",
+					"endCaptures": {
+						"0": {
+							"name": "storage.type.$1.rsdk"
+						}
+					},
+					"patterns": [
+						{
+							"include": "$base"
+						}
+					]
+				},
+				{
+					"begin": "\\b(event)\\b",
+					"beginCaptures": {
+						"0": {
+							"name": "storage.type.$1.rsdk"
+						}
+					},
+					"end": "\\b(end event)\\b",
 					"endCaptures": {
 						"0": {
 							"name": "storage.type.$1.rsdk"
