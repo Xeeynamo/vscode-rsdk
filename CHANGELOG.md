@@ -6,6 +6,10 @@ The format used in this document follows the [Keep a Changelog](http://keepachan
 
 ## [Unreleased]
 
+## [0.2.2] - 2021-08-31
+
+- Add `default` highlight on switch statemets
+
 ## [0.2.1] - 2021-08-28
 
 - Add early support for RSDKv4 (also named RSDKvB)

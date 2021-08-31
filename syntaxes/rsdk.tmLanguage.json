@@ -40,7 +40,7 @@
 	],
 	"repository": {
 		"invalid-keywords": {
-			"match": "\\b(end|endfunction|endsub|else|endif|case|break|endswitch|loop)\\b",
+			"match": "\\b(end|endfunction|endsub|else|endif|case|default|break|endswitch|loop)\\b",
 			"captures": {
 				"0": {
 					"name": "invalid.illegal.stray-$1.rsdk"
@@ -190,6 +190,20 @@
 									"include": "$base"
 								}
 							]
+						},
+						{
+							"begin": "\\b(default)\\b",
+							"beginCaptures": {
+								"0": {
+									"name": "keyword.control.$1.rsdk"
+								}
+							},
+							"end": "\\b(break)\\b",
+							"endCaptures": {
+								"0": {
+									"name": "keyword.control.$1.rsdk"
+								}
+							}
 						},
 						{
 							"match": "\\b(endswitch|end switch)\\b",
@@ -386,7 +400,7 @@
 			]
 		},
         "function-call": {
-            "begin": "(?x)\n(?!(?:if|else|endif|while|switch|case|break|endswitch|function|endfunction|sub|endsub)\\s*\\()\n(?=\n(?:[A-Za-z_][A-Za-z0-9_]*+|::)++\\s*\\(  # actual name\n|\n(?:(?<=operator)(?:[-*&<>=+!]+|\\(\\)|\\[\\]))\\s*\\(\n)",
+            "begin": "(?x)\n(?!(?:if|else|endif|while|switch|case|default|break|endswitch|function|endfunction|sub|endsub)\\s*\\()\n(?=\n(?:[A-Za-z_][A-Za-z0-9_]*+|::)++\\s*\\(  # actual name\n|\n(?:(?<=operator)(?:[-*&<>=+!]+|\\(\\)|\\[\\]))\\s*\\(\n)",
             "end": "(?<=\\))(?!\\w)",
             "name": "meta.function-call.rsdk",
             "patterns": [
@@ -410,7 +424,7 @@
                     "include": "#operators"
                 },
                 {
-                    "begin": "(?x)\n(?!(?:if|else|endif|while|switch|case|break|endswitch|function|endfunction|sub|endsub)\\s*\\()\n(\n(?:[A-Za-z_][A-Za-z0-9_]*+|::)++  # actual name\n|\n(?:(?<=operator)(?:[-*&<>=+!]+|\\(\\)|\\[\\]))\n)\n\\s*(\\()",
+                    "begin": "(?x)\n(?!(?:if|else|endif|while|switch|case|default|break|endswitch|function|endfunction|sub|endsub)\\s*\\()\n(\n(?:[A-Za-z_][A-Za-z0-9_]*+|::)++  # actual name\n|\n(?:(?<=operator)(?:[-*&<>=+!]+|\\(\\)|\\[\\]))\n)\n\\s*(\\()",
                     "beginCaptures": {
                         "1": {
                             "name": "entity.name.function.rsdk"
