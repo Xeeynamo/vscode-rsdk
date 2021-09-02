@@ -1,8 +1,9 @@
 name: Deploy to VS Marketplace
 
 on:
-  workflow_dispatch:
-    inputs:
+  push:
+    branches:
+      - master
 
 jobs:
   deploy:
