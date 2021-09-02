@@ -6,6 +6,10 @@ The format used in this document follows the [Keep a Changelog](http://keepachan
 
 ## [Unreleased]
 
+## [0.2.3] - 2021-09-03
+
+- Add `foreach` and `next` highlight
+
 ## [0.2.2] - 2021-08-31
 
 - Add `default` highlight on switch statemets
