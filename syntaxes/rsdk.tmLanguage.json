@@ -234,10 +234,19 @@
 					]
 				},
 				{
-					"begin": "\\b(foreach)\\b",
+					"begin": "\\s*(foreach)\\s*\\(\\s*(\\w*)\\s*\\,\\s*(\\w*)\\s*\\,\\s*(ACTIVE_ENTITIES|ALL_ENTITIES)\\s*\\)",
 					"beginCaptures": {
-						"0": {
+						"1": {
 							"name": "keyword.control.$1.rsdk"
+						},
+						"2": {
+							"name": "entity.name.type.group.rsdk"
+						},
+						"3": {
+							"name": "entity.name.variable.local.rsdk"
+						},
+						"4": {
+							"name": "entity.name.type.filter.rsdk"
 						}
 					},
 					"end": "\\b(next)\\b",
