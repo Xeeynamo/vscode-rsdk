@@ -10,6 +10,9 @@
 			"include": "#numbers"
 		},
 		{
+			"include": "#typename-entity"
+		},
+		{
 			"include": "#flow-control"
 		},
 		{
@@ -118,6 +121,23 @@
 							]
 						}
 					]
+				}
+			}
+		},
+		"typename-entity": {
+			"match": "(TypeName)\\s*(\\[)\\s*(\\w*)\\s*(\\])",
+			"captures": {
+				"1": {
+					"name": "storage.type.typename.rsdk"
+				},
+				"2": {
+					"name": "punctuation.squarebracket.open.rsdk"
+				},
+				"3": {
+					"name": "entity.name.type.rsdk"
+				},
+				"4": {
+					"name": "punctuation.squarebracket.close.rsdk"
 				}
 			}
 		},
