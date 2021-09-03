@@ -34,6 +34,9 @@
 			"include": "#preprocessor-function-definition"
 		},
 		{
+			"include": "#function-definition"
+		},
+		{
 			"include": "#function-call"
 		},
         {
@@ -43,7 +46,7 @@
 	],
 	"repository": {
 		"invalid-keywords": {
-			"match": "\\b(end|endfunction|endsub|else|endif|loop|next|case|default|break|endswitch|loop)\\b",
+			"match": "\\b(end|endfunction|endsub|else|endif|loop|next|case|default|endswitch|break|loop)\\b",
 			"captures": {
 				"0": {
 					"name": "invalid.illegal.stray-$1.rsdk"
@@ -213,7 +216,7 @@
 						},
 						{
 							"match": "\\b(default)\\b",
-									"name": "keyword.control.$1.rsdk"
+							"name": "keyword.control.$1.rsdk"
 						},
 						{
 							"match": "\\b(endswitch|end switch)\\b",
@@ -454,6 +457,22 @@
                             "name": "punctuation.definition.directive.function.rsdk"
                         },
                         "4": {
+                            "name": "entity.name.function.definition.rsdk"
+                        }
+					},
+					"patterns": [ ]
+				}
+			]
+		},
+		"function-definition": {
+			"patterns": [
+				{
+					"match": "^\\s*(reserve\\s*function)\\b\\s*(\\w*)",
+					"captures": {
+                        "1": {
+                            "name": "storage.type.function.definition.rsdk"
+                        },
+                        "2": {
                             "name": "entity.name.function.definition.rsdk"
                         }
 					},
