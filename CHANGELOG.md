@@ -6,6 +6,12 @@ The format used in this document follows the [Keep a Changelog](http://keepachan
 
 ## [Unreleased]
 
+## [0.2.5] - 2021-09-04
+
+- Highlight `TypeName[foo]`
+- Highlight `TypeName` keyword in a `foreach`
+- Highlight in red wrong parameters for `foreach` expressions
+
 ## [0.2.4] - 2021-09-03
 
 - Highlight `foreach` parameters

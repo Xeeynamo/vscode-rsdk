@@ -2,7 +2,7 @@
 	"name": "rsdk-script",
 	"displayName": "RSDK Script",
 	"description": "RSDK script syntax highlighting",
-	"version": "0.2.4",
+	"version": "0.3.0",
 	"publisher": "xeeynamo",
 	"repository": "https://github.com/xeeynamo/vscode-rsdk",
 	"license": "Apache-2.0",
