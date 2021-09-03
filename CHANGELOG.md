@@ -6,7 +6,13 @@ The format used in this document follows the [Keep a Changelog](http://keepachan
 
 ## [Unreleased]
 
-## [0.2.5] - 2021-09-04
+## [0.3.1] - 2021-09-04
+
+BUGFIX:
+
+- Do not stop parsing when a `default` in a `switch` case does not have a `break`
+
+## [0.3.0] - 2021-09-04
 
 - Highlight `TypeName[foo]`
 - Highlight `TypeName` keyword in a `foreach`

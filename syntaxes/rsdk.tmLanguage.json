@@ -212,18 +212,8 @@
 							]
 						},
 						{
-							"begin": "\\b(default)\\b",
-							"beginCaptures": {
-								"0": {
+							"match": "\\b(default)\\b",
 									"name": "keyword.control.$1.rsdk"
-								}
-							},
-							"end": "\\b(break)\\b",
-							"endCaptures": {
-								"0": {
-									"name": "keyword.control.$1.rsdk"
-								}
-							}
 						},
 						{
 							"match": "\\b(endswitch|end switch)\\b",
