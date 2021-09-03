@@ -254,18 +254,30 @@
 					]
 				},
 				{
-					"begin": "\\s*(foreach)\\s*\\(\\s*(\\w*)\\s*\\,\\s*(\\w*)\\s*\\,\\s*(ACTIVE_ENTITIES|ALL_ENTITIES)\\s*\\)",
+					"begin": "\\s*(foreach)\\s*\\(\\s*((\\w*)|[a-zA-Z0-9_ \\t\\[\\]]*])\\s*\\,\\s*(\\w*)\\s*\\,\\s*(ACTIVE_ENTITIES|ALL_ENTITIES)\\s*\\)",
 					"beginCaptures": {
 						"1": {
 							"name": "keyword.control.$1.rsdk"
 						},
 						"2": {
-							"name": "entity.name.type.group.rsdk"
-						},
-						"3": {
-							"name": "entity.name.variable.local.rsdk"
+							"patterns": [
+								{
+									"include": "#typename-entity"
+								},
+								{
+									"match": "\\w*$",
+									"name": "entity.name.type.group.rsdk"
+								},
+								{
+									"match": ".*",
+									"name": "invalid.illegal.type.rsdk"
+								}
+							]
 						},
 						"4": {
+							"name": "entity.name.variable.local.rsdk"
+						},
+						"5": {
 							"name": "entity.name.type.filter.rsdk"
 						}
 					},
