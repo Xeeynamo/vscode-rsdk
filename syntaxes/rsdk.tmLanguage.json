@@ -442,7 +442,7 @@
 		"preprocessor-function-definition": {
 			"patterns": [
 				{
-					"match": "^\\s*((#)\\s*(function))\\b\\s*",
+					"match": "^\\s*((#)\\s*(function))\\b\\s*(\\w*)",
 					"captures": {
                         "0": {
                             "name": "meta.preprocessor.rsdk"
@@ -450,8 +450,11 @@
                         "1": {
                             "name": "keyword.control.directive.function.rsdk"
                         },
-                        "2": {
+                        "3": {
                             "name": "punctuation.definition.directive.function.rsdk"
+                        },
+                        "4": {
+                            "name": "entity.name.function.definition.rsdk"
                         }
 					},
 					"patterns": [ ]
