@@ -489,12 +489,21 @@
 		"static-value-definition": {
 			"patterns": [
 				{
-					"match": "^\\s*((public|private)\\s*value)\\b\\s*(\\w*)\\s*\\=\\s*([0-9a-zA-Z_]*)\\;",
+					"match": "^\\s*((\\w*)\\s*value)\\b\\s*(\\w*)\\s*\\=\\s*([0-9a-zA-Z_]*)\\;",
 					"captures": {
                         "1": {
                             "name": "storage.type.value.definition.rsdk"
                         },
                         "2": {
+							"patterns": [
+								{
+									"include": "#definition-visibility"
+								},
+								{
+									"match": ".*",
+									"name": "invalid.illegal"
+								}
+							],
                             "name": "storage.type.value.visibility.rsdk"
                         },
                         "3": {
@@ -518,12 +527,21 @@
 		"alias-definition": {
 			"patterns": [
 				{
-					"match": "^\\s*((public|private)\\s*alias)\\b\\s*([0-9a-zA-Z_]*)\\s*(\\:)\\s*([0-9a-zA-Z_]*)\\s*$",
+					"match": "^\\s*((\\w*)\\s*alias)\\b\\s*([0-9a-zA-Z_]*)\\s*(\\:)\\s*([0-9a-zA-Z_]*)\\s*$",
 					"captures": {
                         "1": {
                             "name": "storage.type.alias.definition.rsdk"
                         },
                         "2": {
+							"patterns": [
+								{
+									"include": "#definition-visibility"
+								},
+								{
+									"match": ".*",
+									"name": "invalid.illegal"
+								}
+							],
                             "name": "storage.type.alias.visibility.rsdk"
                         },
                         "3": {
@@ -555,6 +573,10 @@
 					}
 				}
 			]
+		},
+		"definition-visibility": {
+			"match": "^(private|public)$",
+			"name": "storage.type.visibility.rsdk"
 		},
         "function-call": {
             "begin": "(?x)\n(?!(?:if|else|endif|while|loop|foreach|next|switch|case|default|break|endswitch|function|endfunction|sub|endsub)\\s*\\()\n(?=\n(?:[A-Za-z_][A-Za-z0-9_]*+|::)++\\s*\\(  # actual name\n|\n(?:(?<=operator)(?:[-*&<>=+!]+|\\(\\)|\\[\\]))\\s*\\(\n)",

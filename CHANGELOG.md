@@ -6,6 +6,10 @@ The format used in this document follows the [Keep a Changelog](http://keepachan
 
 ## [Unreleased]
 
+## [0.4.1] - 2021-09-05
+
+- Better support to highlight `private` and `public` keywords
+
 ## [0.4.0] - 2021-09-05
 
 - `#function` highlights the function name
