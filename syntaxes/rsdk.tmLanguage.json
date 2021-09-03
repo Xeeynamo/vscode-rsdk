@@ -254,7 +254,7 @@
 					]
 				},
 				{
-					"begin": "\\s*(foreach)\\s*\\(\\s*((\\w*)|[a-zA-Z0-9_ \\t\\[\\]]*])\\s*\\,\\s*(\\w*)\\s*\\,\\s*(ACTIVE_ENTITIES|ALL_ENTITIES)\\s*\\)",
+					"begin": "\\s*(foreach)\\s*\\(\\s*((\\w*)|[a-zA-Z0-9_ \\t\\[\\]]*])\\s*\\,\\s*(\\w*)\\s*\\,\\s*(\\w*)\\s*\\)",
 					"beginCaptures": {
 						"1": {
 							"name": "keyword.control.$1.rsdk"
@@ -278,7 +278,16 @@
 							"name": "entity.name.variable.local.rsdk"
 						},
 						"5": {
-							"name": "entity.name.type.filter.rsdk"
+							"patterns": [
+								{
+									"match": "ACTIVE_ENTITIES|ALL_ENTITIES",
+									"name": "entity.name.type.filter.rsdk"
+								},
+								{
+									"match": ".*",
+									"name": "invalid.illegal.type.rsdk"
+								}
+							]
 						}
 					},
 					"end": "\\b(next)\\b",
