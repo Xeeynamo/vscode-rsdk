@@ -37,6 +37,9 @@
 			"include": "#function-definition"
 		},
 		{
+			"include": "#alias-definition"
+		},
+		{
 			"include": "#static-value-definition"
 		},
 		{
@@ -501,6 +504,47 @@
                             "patterns": [
 								{
 									"include": "#numbers"
+								},
+								{
+									"match": ".*",
+									"name": "invalid.illegal"
+								}
+							]
+                        }
+					}
+				}
+			]
+		},
+		"alias-definition": {
+			"patterns": [
+				{
+					"match": "^\\s*((public|private)\\s*alias)\\b\\s*([0-9a-zA-Z_]*)\\s*(\\:)\\s*([0-9a-zA-Z_]*)\\s*$",
+					"captures": {
+                        "1": {
+                            "name": "storage.type.alias.definition.rsdk"
+                        },
+                        "2": {
+                            "name": "storage.type.alias.visibility.rsdk"
+                        },
+                        "3": {
+							"patterns": [
+								{
+									"include": "#numbers"
+								},
+								{
+									"match": ".*",
+									"name": "invalid.illegal"
+								}
+							]
+                        },
+                        "4": {
+							"name": "punctuation.separator.colon.rsdk"
+                        },
+                        "5": {
+							"patterns": [
+								{
+									"match": "\\w*",
+									"name": "entity.name.type.constant.rsdk"
 								},
 								{
 									"match": ".*",

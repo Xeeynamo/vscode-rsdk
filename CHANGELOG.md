@@ -6,6 +6,13 @@ The format used in this document follows the [Keep a Changelog](http://keepachan
 
 ## [Unreleased]
 
+## [0.4.0] - 2021-09-05
+
+- `#function` highlights the function name
+- Adds support for `reserve function`
+- Adds support for `private alias` and `public alias`
+- Adds support for `private value` and `public value`
+
 ## [0.3.1] - 2021-09-04
 
 BUGFIX:
