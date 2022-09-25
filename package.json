@@ -44,6 +44,13 @@
 				"scopeName": "source.rsdk",
 				"path": "./syntaxes/rsdk.tmLanguage.json"
 			}
+		],
+
+		"snippets": [
+			{
+				"language": "rsdk",
+				"path": "./rsdk-snippets.json"
+			}
 		]
 	},
 	"__metadata": {
