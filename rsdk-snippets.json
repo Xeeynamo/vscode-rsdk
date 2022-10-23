@@ -1,6 +1,6 @@
 {
 	"Setup v3 Script":{
-		"prefix": "RetroScript v3 Setup",
+		"prefix": "v3 Setup",
 		"body": [
 			"// RSDK Project ${3|Sonic CD,Custom v3 Project|}",
 			"// Script Name: $TM_FILENAME_BASE",
@@ -36,51 +36,63 @@
 			"end sub",
 			"",
 			"",
-			"sub RSDKDraw",
-			"\tDrawSprite(0)",
-			"end sub",
-			"",
 			"// ========================",
 			"// Editor Subs",
 			"// ========================",
+			"",
+			"sub RSDKDraw",
+			"\tDrawSprite(0)",
+			"end sub",
 			"",
 			"sub RSDKLoad",
 			"\tLoadSpriteSheet(\"Global/Display.gif\")",
 			"\tSpriteFrame(-16, -16, 32, 32, 1, 143)\t\t// #0 - \"Script\" Icon",
 			"\t",
 			"\tSetVariableAlias(ALIAS_VAR_PROPVAL, \"unused\")",
-			"end sub",
-			"",
-			"",
-			"// ========================",
-			"// Editor Helpers",
-			"// ========================"
+			"end sub"
 		],
 		"description": "Set basic format for a v3 script"
 	},
 
 	"Setup v4 Script":{
-		"prefix": "RetroScript v4 Setup",
+		"prefix": "v4 Setup",
 		"body": [
 			"// ${3|Sonic 1,Sonic 2,Custom v4 Project|}",
 			"// Script Name: $TM_FILENAME_BASE",
 			"// Script Author: ${4:Script Author}",
 			"",
+			"// ========================",
 			"// Aliases",
+			"// ========================",
 			"",
 			"// States",
 			"",
 			"// Custom Aliases",
 			"",
 			"",
-			"// Function declarations",
+			"// ========================",
+			"// Function Declarations",
+			"// ========================",
 			"",
 			"",
+			"// ========================",
 			"// Static Values",
+			"// ========================",
 			"",
 			"",
+			"// ========================",
 			"// Tables",
+			"// ========================",
 			"",
+			"",
+			"// ========================",
+			"// Function Definitions",
+			"// ========================",
+			"",
+			"",
+			"// ========================",
+			"// Events",
+			"// ========================",
 			"",
 			"event ObjectUpdate",
 			"\t$0",
@@ -97,25 +109,20 @@
 			"end event",
 			"",
 			"",
+			"// ========================",
+			"// Editor Events",
+			"// ========================",
+			"",
 			"event RSDKDraw",
 			"\tDrawSprite(0)",
 			"end event",
-			"",
-			"// ========================",
-			"// Editor Subs",
-			"// ========================",
 			"",
 			"event RSDKLoad",
 			"\tLoadSpriteSheet(\"Global/Display.gif\")",
 			"\tSpriteFrame(-16, -16, 32, 32, 1, 143)\t\t// #0 - \"Script\" Icon",
 			"\t",
 			"\tSetVariableAlias(ALIAS_VAR_PROPVAL, \"unused\")",
-			"end event",
-			"",
-			"",
-			"// ========================",
-			"// Editor Helpers",
-			"// ========================"
+			"end event"
 		],
 		"description": "Set basic format for a v4 script"
 	},
@@ -144,7 +151,7 @@
 	},
 
 	"v4 Events": {
-		"prefix": "(v4) Event",
+		"prefix": "(v4) Events",
 		"body": [
 			"event ${3|ObjectUpdate,ObjectDraw,ObjectStartup|}",
 			"\t$0",
@@ -274,7 +281,7 @@
 	},
 
 	"Add v3 misc aliases":{
-		"prefix": "(v3) misc aliases",
+		"prefix": "(v3) Misc aliases",
 		"body": [
 			"// Misc aliases",
 			"#alias  0 : GRAVITY_GROUND",
@@ -390,11 +397,11 @@
 	},
 
 	"v3 Platform Types":{
-		"prefix": "(v3) Platform",
+		"prefix": "(v3) #Platform",
 		"body": [
 			"#platform: ${3|Standard,Mobile,Use_Standalone,Use_Origins,SW_Renderer,HW_Renderer,Use_Haptics,No_Haptics|}",
 			"\t$0",
-			"#endplatform"
+			"#endplatform\n"
 			],
 		"description": [
 			"Skip over lines of code if",
@@ -404,11 +411,11 @@
 	},
 
 	"v4 Platform Types":{
-		"prefix": "(v4) Platform",
+		"prefix": "(v4) #Platform",
 		"body": [
 			"#platform: ${4|STANDARD,MOBILE,USE_STANDALONE,USE_ORIGINS,SW_RENDERING,HW_RENDERING,USE_F_FEEDBACK,NO_F_FEEDBACK|}",
 			"\t$0",
-			"#endplatform"
+			"#endplatform\n"
 		],
 		"description": [
 			"Skip over lines of code if",
@@ -418,7 +425,7 @@
 	},
 
 	"CheckEqual": {
-		"prefix": "CheckEqual()",
+		"prefix": "Check Equal",
 		"body": "CheckEqual(${3:A}, ${4:B})\n",
 		"description": [
 			"Boolean expression.\n",
@@ -426,9 +433,9 @@
 		]
 	},
 
-	"CheckNotEquals": {
-		"prefix": "CheckNotEquals()",
-		"body": "CheckNotEquals(${3:A}, ${4:B})\n",
+	"CheckNotEqual": {
+		"prefix": "Check Not Equal",
+		"body": "CheckNotEqual(${3:A}, ${4:B})\n",
 		"description": [
 			"Boolean expression.",
 			"\rmakes CheckResult true if A is not the same as B"
@@ -436,7 +443,7 @@
 	},
 
 	"CheckGreater": {
-		"prefix": "CheckGreater()",
+		"prefix": "Check Greater",
 		"body": "CheckGreater(${3:A}, ${4:B})\n",
 		"description": [
 			"Boolean expression.",
@@ -445,7 +452,7 @@
 	},
 
 	"CheckLower": {
-		"prefix": "CheckLower()",
+		"prefix": "Check Lower",
 		"body": "CheckLower(${3:A}, ${4:B})\n",
 		"description": [
 			"Boolean expression.",
@@ -465,7 +472,7 @@
 	},
 
 	"if-else statement": {
-		"prefix": "if-else",
+		"prefix": "if-else-statement",
 		"body": [
 			"if ${3:var} ${4:bool expression} ${5:int/var/alias}",
 			"\t$0",
@@ -477,12 +484,12 @@
 	},
 
 	"switch statement": {
-		"prefix": "switch",
+		"prefix": "switch-statement",
 		"body": [
 			"switch ${3:var}",
 			"case ${4:int/alias}",
 			"\t$0",
-			"\tbreak",
+			"\tbreak\n",
 			"end switch"
 		],
 		"description": [
@@ -493,7 +500,7 @@
 	},
 
 	"while statement": {
-		"prefix": "while",
+		"prefix": "while-statement",
 		"body": [
 			"while ${3:var} ${4:bool expression} ${5:int/var/alias}",
 			"\t$0",
@@ -503,9 +510,9 @@
 	},
 
 	"for-each statement": {
-		"prefix": "(v4) foreach",
+		"prefix": "(v4) foreach-statement",
 		"body": [
-			"foreach(TypeName[${3:objectName}], ${4:store}, ${5|ALL_ENTITIES,ACTIVE_ENTITIES,GROUP_PLAYERS|})",
+			"foreach(TypeName[${3:objectName}], ${4:int store}, ${5|ALL_ENTITIES,ACTIVE_ENTITIES,GROUP_PLAYERS|})",
 			"\t$0",
 			"next"
 		],
@@ -518,7 +525,7 @@
 	},
 
 	"Set new music track":{
-		"prefix": "SetMusicTrack()",
+		"prefix": "Set Music Track",
 		"body": "SetMusicTrack(\"${3:string filePath}\", ${4:int trackID}, ${5:int loopPoint})\n",
 		"description": [
 			"Loads an ogg formatted file from",
@@ -529,67 +536,73 @@
 	},
 
 	"Play music":{
-		"prefix": "PlayMusic()",
+		"prefix": "Play Music",
 		"body": "PlayMusic(${3:int trackID})\n",
 		"description": "Plays the music track loaded into the slot trackID"
 	},
 
 	"Stop music":{
-		"prefix": "StopMusic()",
+		"prefix": "Stop Music",
 		"body": "StopMusic()\n",
 		"description": "Stops the currently playing music track"
 	},
 
 	"Pause music":{
-		"prefix": "PauseMusic()",
+		"prefix": "Pause Music",
 		"body": "PauseMusic()\n",
 		"description": "Pauses the currently playing music track"
 	},
 
 	"Resume music":{
-		"prefix": "ResumeMusic()",
+		"prefix": "Resume Music",
 		"body": "ResumeMusic()\n",
 		"description": "Resumes paused music"
 	},
 
 	"Swap music track":{
-		"prefix": "SwapMusicTrack()",
+		"prefix": "(v4) Swap Music Track",
 		"body": "SwapMusicTrack(\"${3:string filePath}\", ${4:int trackID}, ${5:int loopPoint}, ${6:int ratio})\n",
 		"description": [
 			"Similar to SetMusicTrack() and PlayMusic()",
 			"\rbut starts at a position based on ratio.",
-			"\rratio uses a 8000-based value",
-			"\rso 8000 = 1.0 music speed, 4000 = 0.5, etc.",
+			"\rratio uses a 10000-based value",
+			"\rso 10000 = 1.0 music speed, 5000 = 0.5, etc.",
 			"\rUsed more commonly with speed shoes"
 		]
 	},
 
 	"Play sfx":{
-		"prefix": "PlaySfx()",
-		"body": "PlaySfx(${3:int sfx}, ${4:int loopCount})\n",
-		"description": "Plays the sfx with matching gameconfig index loopCount times"
+		"prefix": "Play Sfx",
+		"body": "PlaySfx(${3:int sfx}, ${4:bool loop})\n",
+		"description": "Plays the sfx with matching index (gameconfig index on v3), looping if the bool is true"
 	},
 
 	"Stop sfx":{
-		"prefix": "StopSfx()",
+		"prefix": "Stop Sfx",
 		"body": "StopSfx(${3:int sfx})\n",
-		"description": "Stops the sfx with matching gameconfig index"
+		"description": "Stops the sfx with matching index (gameconfig index on v3)"
 	},
 
 	"Play stage sfx":{
-		"prefix": "PlayStageSfx()",
-		"body": "PlayStageSfx(${3:int sfx}, ${4:int loopCount})\n",
-		"description": "Plays the sfx with matching stageconfig index loopCount times"
+		"prefix": "(v3) Play Stage Sfx",
+		"body": "PlayStageSfx(${3:int sfx}, ${4:bool loop})\n",
+		"description": [
+			"Plays the sfx with matching stageconfig index, looping if bool is true",
+			"merged in v4 with PlaySfx"
+		]
 	},
 
 	"Stop stage sfx":{
-		"prefix": "StopStageSfx()",
+		"prefix": "(v3) Stop Stage Sfx",
 		"body": "StopStageSfx(${3:int sfx})\n",
-		"description": "Stops the sfx with matching stageconfig index"
+		"description": [
+			"Stops the sfx with matching stageconfig index",
+			"merged in v4 with StopSfx"
+		]
 	},
 
 	"Set sfx attributes":{
-		"prefix": "SetSfxAttributes()",
+		"prefix": "Set Sfx Attributes",
 		"body": "SetSfxAttributes(${3:int sfx}, ${4:int loopCount}, ${5:int pan})\n",
 		"description": [
 			"Sets the amount of times for sfx to loop to loopCount",
@@ -599,7 +612,7 @@
 	},
 
 	"Load SpriteSheet":{
-		"prefix": "LoadSpriteSheet()",
+		"prefix": "Load SpriteSheet",
 		"body": "LoadSpriteSheet(\"${3:Filepath}\")\n",
 		"description": [
 			"Loads a spritesheet from Data/Sprites/[Filepath]",
@@ -608,34 +621,34 @@
 	},
 
 	"Remove SpriteSheet":{
-		"prefix": "RemoveSpriteSheet()",
-		"body": "RemoveSpriteSheet(\"${3:Filepath}\"\n",
+		"prefix": "Remove Sprite Sheet",
+		"body": "RemoveSpriteSheet(\"${3:Filepath}\")\n",
 		"description": "Removes a sheet that matches Filepath if it exists"
 	},
 
 	"Add SpriteFrame":{
-		"prefix": "SpriteFrame()",
+		"prefix": "Sprite Frame",
 		"body": "SpriteFrame(${3:int PivotX}, ${4:int PivotY}, ${5:int Width}, ${6:int Height}, ${7:int sprX}, ${8:int sprY})\n",
 		"description": "Creates a spriteframe with the specified values"
 	},
 
-	"Edit SpriteFrame":{
-		"prefix": "EditSpriteFrame()",
-		"body": "EditSpriteFrame(${3:int frame}, ${4:int PivotX}, ${5:int PivotY}, ${6:int Width}, ${7:int Height}, ${8:int sprX}, ${9:int sprY})\n",
+	"Edit Frame":{
+		"prefix": "Edit Frame",
+		"body": "EditFrame(${3:int frame}, ${4:int PivotX}, ${5:int PivotY}, ${6:int Width}, ${7:int Height}, ${8:int sprX}, ${9:int sprY})\n",
 		"description": [
 			"Creates a spriteframe with the specified values",
-			"\rv3 only has this function available in HW mode"
+			"\rthis feature is not in the 2011 steam release"
 		]
 	},
 
 	"Draw Sprite in object position":{
-		"prefix": "DrawSprite()",
+		"prefix": "Draw Sprite",
 		"body": "DrawSprite(${3:int frame})\n",
 		"description": "Draw sprite frame at object's X and Y position"
 	},
 
 	"Draw Sprite w/ custom position":{
-		"prefix": "DrawSpriteXY()",
+		"prefix": "Draw Sprite XY",
 		"body": "DrawSpriteXY(${3:int frame}, ${4:int XPos}, ${5:int YPos})\n",
 		"description": [
 			"Draw sprite frame to a specified X and Y position",
@@ -644,8 +657,8 @@
 	},
 
 	"Draw Sprite w/ custom screen position":{
-		"prefix": "DrawSpriteScreenXY()",
-		"body": "DrawSpriteXY(${3:int frame}, ${4:int iXPos}, ${5:int iYPos})\n",
+		"prefix": "Draw Sprite Screen XY",
+		"body": "DrawSpriteScreenXY(${3:int frame}, ${4:int iXPos}, ${5:int iYPos})\n",
 		"description": [
 			"Draw sprite frame to a specified X and Y position",
 			"the position is interpreted as screen-space (1px = 1px)"
@@ -653,8 +666,8 @@
 	},
 
 	"Draw Sprite w/ visual effects in custom position":{
-		"prefix": "DrawSpriteFX()",
-		"body": "DrawSpriteFX(${3:int frame}, ${4|FX_SCALE,FX_ROTATE,FX_ROTOZOOM,FX_INK,FX_FLIP|}, ${5:int XPos}, ${6:int YPos})\n",
+		"prefix": "Draw Sprite FX",
+		"body": "DrawSpriteFX(${3:int frame}, ${4|FX_SCALE,FX_ROTATE,FX_ROTOZOOM,FX_INK,FX_TINT,FX_FLIP|}, ${5:int XPos}, ${6:int YPos})\n",
 		"description": [
 			"Draw sprite frame to a specified X and Y position",
 			"\rposition is interpreted as world-space (0x10000 = 1px)"
@@ -662,8 +675,8 @@
 	},
 
 	"Draw Sprite w/ visual effects in custom screen position":{
-		"prefix": "DrawSpriteScreenFX()",
-		"body": "DrawSpriteXY(${3:int frame}, ${4|FX_SCALE,FX_ROTATE,FX_ROTOZOOM,FX_INK,FX_FLIP|}, ${5:int iXPos}, ${6:int iYPos})\n",
+		"prefix": "Draw Sprite Screen FX",
+		"body": "DrawSpriteScreenFX(${3:int frame}, ${4|FX_SCALE,FX_ROTATE,FX_ROTOZOOM,FX_INK,FX_TINT,FX_FLIP|}, ${5:int iXPos}, ${6:int iYPos})\n",
 		"description": [
 			"Draw sprite frame to a specified X and Y position",
 			"\rposition is interpreted as screen-space (1 = 1px)"
@@ -671,7 +684,7 @@
 	},
 
 	"Draw tinted rectangle":{
-		"prefix": "DrawTintRect()",
+		"prefix": "Draw Tint Rect",
 		"body": "DrawTintRect(${3:int iXPos}, ${4:int iYPos}, ${5:int width}, ${6:int height})\n",
 		"description": [
 			"Draws a tinted rectangle with a size of width,height",
@@ -680,7 +693,7 @@
 	},
 
 	"Draw Numbers":{
-		"prefix": "DrawNumbers()",
+		"prefix": "Draw Numbers",
 		"body": "DrawNumbers(${3:int startingFrame}, ${4:int iXPos}, ${5:int iYPos}, ${6:int value}, ${7:int digitCnt}, ${8:int spacing}, ${9:bool showAllDigits})\n",
 		"description": [
 			"Draws values using startingFrame as the",
@@ -692,8 +705,8 @@
 	},
 
 	"Draw Act Name":{
-		"prefix": "DrawActName()",
-		"body": "DrawActName(${3:int startingFrame}, ${4:int iXPos}, ${5:int iYPos}, ${6: int align}, ${7:bool allowLowerCase}, ${8:int space width}, ${9:int spacing})\n",
+		"prefix": "Draw Act Name",
+		"body": "DrawActName(${3:int startingFrame}, ${4:int iXPos}, ${5:int iYPos}, ${6:int align}, ${7:bool allowLowerCase}, ${8:int space width}, ${9:int spacing})\n",
 		"description": [
 			"Draws the loaded stage's act name using 26 frames",
 			"\rstarting from startingFrame at iXPos and iYPos",
@@ -706,8 +719,8 @@
 	},
 
 	"Draw rectangle":{
-		"prefix": "DrawRect()",
-		"body": "DrawRect(${3:int iXPos}, ${4:int iYPos}, ${5:int width}, ${6:int height}, ${7: int Red}, ${8: int Green}, ${9: int Blue}, ${10: int Alpha})\n",
+		"prefix": "Draw Rect",
+		"body": "DrawRect(${3:int iXPos}, ${4:int iYPos}, ${5:int width}, ${6:int height}, ${7:int Red}, ${8:int Green}, ${9:int Blue}, ${10:int Alpha})\n",
 		"description": [
 			"Draws a rectangle with a size of width,height\nat ixPos and iYPos,",
 			"\rwith a color of Red, Green, Blue along Alpha"
@@ -715,15 +728,16 @@
 	},
 
 	"Load Animation":{
-		"prefix": "LoadAnimation()",
+		"prefix": "Load Animation",
 		"body": "LoadAnimation(\"${3:AniPath}\")\n",
 		"description": [
 			"Loads an animation from Data/Animations/[AniPath]",
 			"\rfor the object to use"
 		]
 	},
+
 	"Draw Player Animation":{
-		"prefix": "(v3) DrawPlayerAnimation()",
+		"prefix": "(v3) Draw Player Animation",
 		"body": "DrawPlayerAnimation()\n",
 		"description": [
 			"Draws the player at it's X and Y position",
@@ -734,7 +748,7 @@
 	},
 
 	"Draw Object Animation":{
-		"prefix": "DrawObjectAnimation()",
+		"prefix": "Draw Object Animation",
 		"body": "DrawObjectAnimation()\n",
 		"description": [
 			"Draws the object at it's X and Y position",
@@ -747,7 +761,7 @@
 	},
 
 	"Load Video":{
-		"prefix": "(v3) LoadVideo()",
+		"prefix": "(v3) Load Video",
 		"body": "LoadVideo(\"${3:VideoName}\")\n",
 		"description": [
 			"Load a video with the name of VideoName",
@@ -757,25 +771,25 @@
 	},
 
 	"Next RSV Frame":{
-		"prefix": "(v3) NextVideoFrame()",
+		"prefix": "(v3) Next Video Frame",
 		"body": "NextVideoFrame()\n",
 		"description": "Advances the video frame from an RSV file"
 	},
 
 	"Clear Draw List":{
-		"prefix": "ClearDrawList()",
+		"prefix": "Clear Draw List",
 		"body": "ClearDrawList(${3:int layer})\n",
 		"description": "Removes all entries in drawList layer"
 	},
 
 	"Add entity reference in Draw List":{
-		"prefix": "AddDrawListEntityRef()",
+		"prefix": "Add Draw List Entity Ref",
 		"body": "AddDrawListEntityRef(${3:int layer}, ${4:int ObjectPos})\n",
 		"description": "Adds ObjectPos to the drawList layer"
 	},
 
 	"Get entity reference in Draw List":{
-		"prefix": "GetDrawListEntityRef()",
+		"prefix": "Get Draw List Entity Ref",
 		"body": "GetDrawListEntityRef(${3:var store}, ${4:int layer}, ${5:int ObjectPos})\n",
 		"description": [
 			"Gets ObjectPos value in drawList layer",
@@ -784,7 +798,7 @@
 	},
 
 	"Set entity reference in Draw List":{
-		"prefix": "SetDrawListEntityRef()",
+		"prefix": "Set Draw List Entity Ref",
 		"body": "SetDrawListEntityRef(${3:int newValue}, ${4:int layer}, ${5:int ObjectPos})\n",
 		"description": [
 			"Sets ObjectPos value in drawList layer",
@@ -793,29 +807,31 @@
 	},
 
 	"Load Palette":{
-		"prefix": "LoadPalette()",
+		"prefix": "Load Palette",
 		"body": "LoadPalette(\"${3:string filePath}\", ${4:int palBankID}, ${5:int startPalIndex}, ${6:int startIndex}, ${7:int endIndex})\n",
 		"description": [
 			"Loads a palette from Data/Palettes/[filePath]",
 			"into a palette bank starting from startPalIndex,",
 			"with a file offset of startIndex and reading all",
-			"colors through to endIndex"
+			"colors through to endIndex",
+			"HW Renderer cannot use this function"
 		]
 	},
 
 	"Rotate Palette":{
-		"prefix": "RotatePalette()",
+		"prefix": "Rotate Palette",
 		"body": "RotatePalette(${3:int palBankID}, ${4:int startIndex}, ${5:int endIndex}, ${6:int rotationDirection})\n",
 		"description": [
 			"Rotates all colours in the palette bank",
 			"starting from startIndex through to endIndex,",
 			"it will move left if rotationDirection is 0",
-			"otherwise it will move right"
+			"otherwise it will move right",
+			"HW Renderer cannot use this function"
 		]
 	},
 
 	"Set Screen Fade":{
-		"prefix": "SetScreenFade()",
+		"prefix": "Set Screen Fade",
 		"body": ["SetScreenFade(${3:int Red}, ${4:int Green}, ${5:int Blue}, ${6:int Alpha})\n"],
 		"description": [
 			"Sets the fade out effect",
@@ -824,7 +840,7 @@
 	},
 
 	"Set Active Palette":{
-		"prefix": "SetActivePalette()",
+		"prefix": "Set Active Palette",
 		"body": "SetActivePalette(${3:int palBankID}, ${4:int startLine}, ${5:int endLine})\n",
 		"description": [
 			"Sets the active palette for palBankID",
@@ -833,7 +849,7 @@
 	},
 
 	"Set Palette Entry":{
-		"prefix": "(v4) SetPaletteEntry()",
+		"prefix": "(v4) Set Palette Entry",
 		"body": "SetPaletteEntry(${3:int palBankID}, ${4:int palIndex}, ${5:int color})\n",
 		"description": [
 			"Sets the palette entry in palBankID",
@@ -843,7 +859,7 @@
 	},
 
 	"Get Palette Entry":{
-		"prefix": "(v4) GetPaletteEntry()",
+		"prefix": "(v4) Get Palette Entry",
 		"body": "GetPaletteEntry(${3:int palBankID}, ${4:int palIndex}, ${5:int palStore})\n",
 		"description": [
 			"Gets the palette entry in palBankID",
@@ -852,7 +868,7 @@
 	},
 
 	"Set Palette Fade":{
-		"prefix": "SetPaletteFade()",
+		"prefix": "Set Palette Fade",
 		"body": "SetPaletteFade(${3:int destPalBankID}, ${4:int Red}, ${5:int Green}, ${6:int Blue}, ${7:int blendAmount}, ${8:int startIndex}, ${9:int endIndex})\n",
 		"description": [
 			"Blends the currently active palette with",
@@ -864,13 +880,13 @@
 	},
 
 	"v3 Copy Palette":{
-		"prefix": "(v3) CopyPalette()",
+		"prefix": "(v3) Copy Palette",
 		"body": "CopyPalette(${3:int sourcePal}, ${4:int destPal})\n",
 		"description": "Copies sourcePal into destPal"
 	},
 
 	"v4 Copy Palette":{
-		"prefix": "(v4) CopyPalette()",
+		"prefix": "(v4) Copy Palette",
 		"body": "CopyPalette(${3:int sourcePal}, ${4:int sourcePalStart}, ${5:int destPal}, ${6:int destPalStart}, ${7:int count})\n",
 		"description": [
 			"Copies count colors from sourcePal",
@@ -880,8 +896,8 @@
 	},
 
 	"Clear Screen":{
-		"prefix": "ClearScreen()",
-		"body": "ClearScreen(int clearIndex)\n",
+		"prefix": "Clear Screen",
+		"body": "ClearScreen(${3:int clearIndex})\n",
 		"description": [
 			"Clears all pixels on screen with",
 			"\rclearIndex color in the active palette"
@@ -889,8 +905,8 @@
 	},
 
 	"Create Temporary Object": {
-		"prefix": "CreateTempObject()",
-		"body": "CreateTempObject(${3:int objectType}, ${4:int propertyValue}, ${5:object.XPos}, ${6:Object.YPos})\n",
+		"prefix": "Create Temp Object",
+		"body": "CreateTempObject(${3:int objectType}, ${4:int propertyValue}, ${5:int XPos}, ${6:int YPos})\n",
 		"description": [
 			"Creates a temporary object specified",
 			"\rby objectType, propertyValue, XPos and YPos",
@@ -902,8 +918,8 @@
 	},
 
 	"Reset object Entity": {
-		"prefix": "ResetObjectEntity()",
-		"body": "ResetObjectEntity(${3:int objectSlot}, ${4:int objectType}, ${5:int propertyValue}, ${6:Object.XPos}, ${7:Object.YPos})\n",
+		"prefix": "Reset Object Entity",
+		"body": "ResetObjectEntity(${3:int objectSlot}, ${4:int objectType}, ${5:int propertyValue}, ${6:int XPos}, ${7:int YPos})\n",
 		"description": [
 			"Resets objectSlot object to the type",
 			"\rand position specified by type,\r\npropertyValue, XPos and YPos"
@@ -911,19 +927,19 @@
 	},
 
 	"Process player control": {
-		"prefix": "(v3) ProcessPlayerControl()",
+		"prefix": "(v3) Process Player Control",
 		"body": "ProcessPlayerControl()\n",
 		"description": "Handles control inputs"
 	},
 
 	"Process player collision": {
-		"prefix": "(v3) PlayerTileCollision()",
+		"prefix": "(v3) Player Tile Collision",
 		"body": "PlayerTileCollision()\n",
 		"description": "Handles tile collision of player"
 	},
 
 	"Check player collision w/ objects":{
-		"prefix": "(v3) PlayerObjectCollision()",
+		"prefix": "(v3) Player Object Collision",
 		"body": "PlayerObjectCollision(${3|C_TOUCH,C_BOX,C_BOX2,C_PLATFORM|}, ${4:int left HitBox}, ${5:int top HitBox}, ${6:int right HitBox}, ${7:int bottom HitBox})\n",
 		"description": [
 			"Checks for a collision with the player",
@@ -939,26 +955,26 @@
 	},
 
 	"Process Object Control": {
-		"prefix": "(v4) ProcessObjectControl()",
+		"prefix": "(v4) Process Object Control",
 		"body": "ProcessObjectControl()\n",
 		"description": "Handles control inputs"
 	},
 
 	"Process Object Collision": {
-		"prefix": "(v4) ProcessObjectMovement()",
+		"prefix": "(v4) Process Object Movement",
 		"body": "ProcessObjectMovement()\n",
 		"description": "Handles tile collision of an object\n\r(used almost only for player)"
 	},
 
 	"Check object collision w/ other object":{
-		"prefix": "(v4) BoxCollisionTest()",
-		"body": "BoxCollisionTest(${3|C_TOUCH,C_BOX,C_BOX2,C_PLATFORM|}, ${4:int thisObject}, ${5:int thisLeft}, ${6:int thisTop}, ${7:int thisRight}, ${8:int thisBottom}, ${9:int otherObject}, ${10:int otherLeft}, ${11:int otherTop}, ${12:int otherRight}, ${13:int otherBottom})\n",
+		"prefix": "(v4) Box Collision Test",
+		"body": "BoxCollisionTest(${3|C_TOUCH,C_SOLID,C_SOLID2,C_PLATFORM|}, ${4:int thisObject}, ${5:int thisLeft}, ${6:int thisTop}, ${7:int thisRight}, ${8:int thisBottom}, ${9:int otherObject}, ${10:int otherLeft}, ${11:int otherTop}, ${12:int otherRight}, ${13:int otherBottom})\n",
 		"description": [
 			"Checks for collision thisObject and otherObject",
 			"\rusing the hitbox values passed.\n",
 			"\rCheckResult will be 0 if there wasn't collision",
 			"\rIf C_TOUCH is used, any collision will be 1.",
-			"\rIf C_BOX/C_BOX2 is used, CheckResult will be set to:",
+			"\rIf C_SOLID/C_SOLID2 is used, CheckResult will be set to:",
 			"\r1(Floor), 2(LWall), 3(RWall) or 4(Roof),",
 			"\rdepending of collision.",
 			"\rIf C_PLATFORM is used, only top collision will set",
@@ -969,7 +985,7 @@
 	},
 
 	"Check object collision w/ tiles":{
-		"prefix": "ObjectTileCollision()",
+		"prefix": "Object Tile Collision",
 		"body": "ObjectTileCollision(${3:int CSide}, ${4:int xOffset}, ${5:int yOffset}, ${6:int cPlane})\n",
 		"description": [
 			"Tries to collide with the FG layer",
@@ -983,7 +999,7 @@
 	},
 
 	"Check object grip w/ tiles":{
-		"prefix": "ObjectTileGrip()",
+		"prefix": "Object Tile Grip",
 		"body": "ObjectTileGrip(${3:int CSide}, ${4:int xOffset}, ${5:int yOffset}, ${6:int cPlane})\n",
 		"description": [
 			"Tries to collide with the FG layer",
@@ -996,33 +1012,42 @@
 		]
 	},
 
+	"Set object range":{
+		"prefix": "(v4) Set Object Range",
+		"body": "SetObjectRange(${3:int width})\n",
+		"description": [
+			"Changes internal bounds, used mainly so attract mode looks the same",
+			"Regardless of current screen width"
+		]
+	},
+
 	"Get object value":{
-		"prefix": "(v4) GetObjectValue()",
+		"prefix": "(v4) Get Object Value",
 		"body": "GetObjectValue(${3:var store}, ${4:int index}, ${5:int objectPos})\n",
 		"description": "Gets the Object[objectPos].Value\n\rat index and stores it in store"
 	},
 
 	"Set object value":{
-		"prefix": "(v4) SetObjectValue()",
+		"prefix": "(v4) Set Object Value",
 		"body": "SetObjectValue(${3:int value}, ${4:int index}, ${5:int objectPos})\n",
 		"description": "Sets the Object[objectPos].Value\n\rat index to the value of value"
 	},
 
 	"Copy object":{
-		"prefix": "(v4) CopyObject()",
+		"prefix": "(v4) Copy Object",
 		"body": "CopyObject(${3:int startIndex}, ${4:int copyOffset}, ${5:int count})\n",
 		"description": "Copies count objects from\n\rstartIndex to copyOffset"
 	},
 
 	"Load Stage":{
-		"prefix": "LoadStage()",
+		"prefix": "Load Stage",
 		"body": "LoadStage()\n",
 		"description": "Loads a stage based on\n\rStage.ListPos and Stage.ActiveList"
 	},
 
 	"Set Layer Deformation":{
-		"prefix": "SetLayerDeformation()",
-		"body": "SetLayerDeformation(${3:int deformID, ${4:int deformA}, ${5:int deformB}, ${6:int type}, ${7:int offset}, ${8:int count})\n",
+		"prefix": "Set Layer Deformation",
+		"body": "SetLayerDeformation(${3:int deformID}, ${4:int deformA}, ${5:int deformB}, ${6:int type}, ${7:int offset}, ${8:int count})\n",
 		"description": [
 			"Sets the deformation of the",
 			"\rdeformation data array of deformID",
@@ -1031,8 +1056,8 @@
 	},
 
 	"Get tile layer entry":{
-		"prefix": "GetTileLayerEntry()",
-		"body": "GetTileLayerEntry(${3:var chunkStore}, ${4:int layer}, ${5: int chunkX}, ${6: int chunkY})\n",
+		"prefix": "Get TileLayer Entry",
+		"body": "GetTileLayerEntry(${3:var chunkStore}, ${4:int layer}, ${5:int chunkX}, ${6:int chunkY})\n",
 		"description": [
 			"Gets the chunkID of the chunk at",
 			"\rchunkX,chunkY on tilelayer layer",
@@ -1041,8 +1066,8 @@
 	},
 
 	"Set tile layer entry":{
-		"prefix": "SetTileLayerEntry()",
-		"body": "SetTileLayerEntry(${3:int value}, ${4:int layer}, ${5: int chunkX}, ${6: int chunkY})\n",
+		"prefix": "Set TileLayer Entry",
+		"body": "SetTileLayerEntry(${3:int value}, ${4:int layer}, ${5:int chunkX}, ${6:int chunkY})\n",
 		"description": [
 			"Sets the chunkID of the chunk at",
 			"\rchunkX,chunkY on tilelayer layer",
@@ -1051,7 +1076,7 @@
 	},
 
 	"Get 16x16 tile info":{
-		"prefix": "Get16x16TileInfo()",
+		"prefix": "Get 16x16Tile Info",
 		"body": "Get16x16TileInfo(${3:int store}, ${4:int tileX}, ${5:int tileY}, ${6:int infoType})\n",
 		"description": [
 			"Gets the info of infoType of the tile at",
@@ -1072,7 +1097,7 @@
 	},
 
 	"Set 16x16 tile info":{
-		"prefix": "Set16x16TileInfo()",
+		"prefix": "Set 16x16Tile Info",
 		"body": "Set16x16TileInfo(${3:int value}, ${4:int tileX}, ${5:int tileY}, ${6:int infoType})\n",
 		"description": [
 			"Sets the info of infoType of the tile at",
@@ -1093,8 +1118,8 @@
 	},
 
 	"Copy 16x16 tile":{
-		"prefix": "Copy16x16TileInfo()",
-		"body": "Copy16x16TileInfo(${3:int destTile}, ${4:int sourceTile})\n",
+		"prefix": "Copy 16x16Tile",
+		"body": "Copy16x16Tile(${3:int destTile}, ${4:int sourceTile})\n",
 		"description": [
 			"Copies the tileset image data",
 			"\rof sourceTile into destTile\n",
@@ -1103,91 +1128,91 @@
 	},
 
 	"Check current stage folder":{
-		"prefix": "(v4) CheckCurrentStageFolder()",
+		"prefix": "(v4) Check Current Stage Folder",
 		"body": "CheckCurrentStageFolder(\"${3:string checkFolder}\")\n",
 		"description": "set CheckResult to true if\n\rthe loaded stage's folder matches checkFolder"
 	},
 
 	"Check touch screen input":{
-		"prefix": "CheckTouchRect()",
+		"prefix": "Check Touch Rect",
 		"body": "CheckTouchRect(${3:int X1}, ${4:int Y1}, ${5:int X2}, ${6:int Y2})\n",
 		"description": "Check if there was a touch input between\n\rthe inputted coordinates"
 	},
 
 	"Sin":{
-		"prefix": "Sin()",
+		"prefix": "Sin-MathFunc",
 		"body": "Sin(${4:int store}, ${5:int angle})\n",
 		"description": "Gets the value from sin512\n\rlookup table based on angle and sets it in store"
 	},
 
 	"Cos":{
-		"prefix": "Cos()",
+		"prefix": "Cos-MathFunc",
 		"body": "Cos(${4:int store}, ${5:int angle})\n",
 		"description": "Gets the value from cos512\n\rlookup table based on angle and sets it in store"
 	},
 
 	"Sin256":{
-		"prefix": "Sin256()",
+		"prefix": "Sin256-MathFunc",
 		"body": "Sin256(${4:int store}, ${5:int angle})\n",
 		"description": "Gets the value from sin256\n\rlookup table based on angle and sets it in store"
 	},
 	
 	"Cos256":{
-		"prefix": "Cos256()",
+		"prefix": "Cos256-MathFunc",
 		"body": "Cos256(${4:int store}, ${5:int angle})\n",
 		"description": "Gets the value from cos256\n\rlookup table based on angle and sets it in store"
 	},
 
 	"Arctangent":{
-		"prefix": "ATan2()",
+		"prefix": "ATan2-MathFunc",
 		"body": "ATan2(${3:int store}, ${4:int x}, ${5:int y})\n",
 		"description": "Performs an arctan operation\n\rusing x and y, storing the result in store"
 	},
 
 	"Get Bit":{
-		"prefix": "GetBit()",
+		"prefix": "Get Bit",
 		"body": "GetBit(${3:var store}, ${4:int value}, ${5:int bitPos})\n",
 		"description": "Gets bit at index bitPos from value\n\rand stores it in store"
 	},
 
 	"Set Bit":{
-		"prefix": "SetBit()",
+		"prefix": "Set Bit",
 		"body": "SetBit(${3:int value}, ${4:int pos}, ${5:bit})\n",
 		"description": "Sets bit at index pos to set\n\rand updates value accordingly"
 	},
 	
 	"Get random value":{
-		"prefix": "Rand()",
+		"prefix": "Rand",
 		"body": "Rand(${3:var store}, ${4:int max})\n",
 		"description": "Gets a random value from 0 to max(not included)\n\rand stores it in store"
 	},
 
 	"Negate a value":{
-		"prefix": "Not()",
+		"prefix": "Not",
 		"body": "Not(${3:var value})\n",
 		"description": "Performs a NOT operation on value\n\rand updates it (value = -Value)"
 	},
 	
 	"Absolute value":{
-		"prefix": "(v4) Abs()",
+		"prefix": "(v4) Abs",
 		"body": "Abs(${3:var value})\n",
 		"description": "Gets the absolute number of value\n\rand updates value with the new number"
 	},
 
 	"Get table value":{
-		"prefix": "(v4) GetTableValue()",
+		"prefix": "(v4) Get Table Value",
 		"body": "GetTableValue(${3:var store}, ${4:int index}, ${5:table})\n",
 		"description": "Gets a value from table at index\n\rand stores it in store"
 	},
 
 	"Set table value":{
-		"prefix": "(v4) SetTableValue()",
+		"prefix": "(v4) Set Table Value",
 		"body": "SetTableValue(${3:int value}, ${4:int index}, ${5:table})\n",
 		"description": "Sets the value in table at index to value"
 	},
 
 	"Interpolate":{
-		"prefix": "Interpolate()",
+		"prefix": "Interpolate",
 		"body": "Interpolate(${3:var store}, ${4:int x}, ${5:int y}, ${6:int percent})\n",
 		"description": [
 			"Linearly interpolates (LERPs)",
@@ -1198,49 +1223,37 @@
 	},
 
 	"Double interpolation":{
-		"prefix": "InterpolateXY()",
+		"prefix": "InterpolateXY",
 		"body": "InterpolateXY(${3:var storeX}, ${4:var storeY}, ${5:int aX}, ${6:int aY}, ${7:int bX}, ${8:int bY}, ${9:int percent})\n",
 		"description": "InterpolateXY does 2 at once\n\rfor points (aX, aY) and (bX, bY)"
 	},
 
 	"Set identity matrix":{
-		"prefix": "SetIdentityMatrix()",
+		"prefix": "Set Identity Matrix",
 		"body": "SetIdentityMatrix(${3:mat matrix})\n",
 		"description": "Sets the matrix of matID\n\rto the identity state"
 	},
 
 	"Multiply matrix":{
-		"prefix": "MatrixMultiply()",
+		"prefix": "Matrix Multiply",
 		"body": "MatrixMultiply(${3:mat matrixA}, ${4:mat matrixB})\n",
 		"description": "Multiplies matrixA by matrixB\n\rand stores the result in matrixA"
 	},
 
-	"v3 Translate matrix XYZ":{
-		"prefix": "(v3) TranslateMatrixXYZ()",
-		"body": "TranslateMatrixXYZ(${3:mat matrix}, ${4:int x}, ${5:int y}, ${6:int z})\n",
-		"description": "Translates matrix to x,y,z\n\rall shifted 8 bits (0x100 = 1.0)"
-	},
-
-	"v3 Scale matrix XYZ":{
-		"prefix": "(v3) ScaleMatrixXYZ()",
-		"body": "ScaleMatrixXYZ(${3:mat matrix}, ${4:int x}, ${5:int y}, ${6:int z})\n",
-		"description": "Scales matrix to x,y,z\n\rall shifted 8 bits (0x100 = 1.0)"
-	},
-
-	"v4 Translate matrix XYZ":{
-		"prefix": "(v4) MatrixTranslateXYZ()",
+	"Translate matrix XYZ":{
+		"prefix": "Translate Matrix XYZ",
 		"body": "MatrixTranslateXYZ(${3:mat matrix}, ${4:int x}, ${5:int y}, ${6:int z})\n",
 		"description": "Translates matrix to x,y,z\n\rall shifted 8 bits (0x100 = 1.0)"
 	},
 
-	"v4 Scale matrix XYZ":{
-		"prefix": "(v4) MatrixScaleXYZ()",
+	"Scale matrix XYZ":{
+		"prefix": "Scale Matrix XYZ",
 		"body": "MatrixScaleXYZ(${3:mat matrix}, ${4:int x}, ${5:int y}, ${6:int z})\n",
 		"description": "Scales matrix to x,y,z\n\rall shifted 8 bits (0x100 = 1.0)"
 	},
 
 	"Rotate matrix X, Y or Z":{
-		"prefix": "MatrixRotate()",
+		"prefix": "Matrix Rotate",
 		"body": "${3|MatrixRotateX,MatrixRotateY,MatrixRotateZ|}(${4:mat matrix}, ${5:int angle})\n",
 		"description": [
 			"Rotates matrix to angle on the specified axis",
@@ -1249,7 +1262,7 @@
 	},
 	
 	"Rotate matrix X, Y and Z":{
-		"prefix": "MatrixRotateXYZ()",
+		"prefix": "Matrix Rotate XYZ",
 		"body": "MatrixRotateXYZ(${4:mat matrix}, ${5:int x}, ${6:int y}, ${7:int z})\n",
 		"description": [
 			"Rotates matrix to angle on the specified axis",
@@ -1258,38 +1271,38 @@
 	},
 
 	"Inverse matrix":{
-		"prefix": "(v4) MatrixInverse()",
+		"prefix": "(v4) Matrix Inverse",
 		"body": "MatrixInverse(${3:int matrix})\n",
 		"description": "Performs an inversion on matrix's values"
 	},
 
 	"Transform vertices":{
-		"prefix": "TransformVertices()",
+		"prefix": "Transform Vertices",
 		"body": "TransformVertices(${3:mat matrix}, ${4:int startIndex}, ${5:int endIndex})\n",
 		"description": "Transform all vertices from\n\rstartIndex to endIndex using matrix"
 	},
 
 	"Draw 3D Scene":{
-		"prefix": "Draw3DScene()",
+		"prefix": "Draw 3DScene",
 		"body": "Draw3DScene()\n",
 		"description": "Draws the active 3DScene data to the screen"
 	},
 
 	"Load text font":{
-		"prefix": "(v3) LoadTextFont()",
+		"prefix": "(v3) Load Text Font",
 		"body": "LoadTextFont(\"${3:string filePath}\")\n",
 		"description": "Loads a bitmap font from filePath\n\rfor use with textMenus"
 	},
 
 	"Load text file":{
-		"prefix": "LoadTextFile()",
-		"body": "LoadTextFile(${3|MENU_1,MENU_2|}, \"${4:string filePath}\")\n",
+		"prefix": "Load Text File",
+		"body": "LoadTextFile(${3|MENU_1,MENU_2|}, \"${4:string filePath}\", ${5:byte mapCode})\n",
 		"description": "Loads a menu based on the file\n\rloaded from filePath"
 	},
 
 	"Setup menu":{
-		"prefix": "SetupMenu()",
-		"body": "SetupMenu(${3|MENU_1,MENU_2}, ${4:int rowCount}, ${5:int selectionCount}, ${6:int alignment})\n",
+		"prefix": "Setup Menu",
+		"body": "SetupMenu(${3|MENU_1,MENU_2|}, ${4:int rowCount}, ${5:int selectionCount}, ${6:int alignment})\n",
 		"description": [
 			"Sets up menu with rowCount rows,",
 			"\rselectionCount active selections",
@@ -1298,8 +1311,8 @@
 	},
 
 	"Add text menu entry":{
-		"prefix": "AddMenuEntry()",
-		"body": "AddMenuEntry(${3|MENU_1,MENU_2|}, \"${4:string text}\", ${5:int highlightEntry})\n",
+		"prefix": "Add Menu Entry",
+		"body": "AddMenuEntry(${3|MENU_1,MENU_2|}, \"${4:string text}\", ${5:bool highlightEntry})\n",
 		"description": [
 			"Adds an entry to menu with the",
 			"\rcontents of text, and highlighted",
@@ -1308,8 +1321,8 @@
 	},
 
 	"Edit text menu entry":{
-		"prefix": "EditMenuEntry()",
-		"body": "EditMenuEntry(${3|MENU_1,MENU_2|}, \"${4:string text}\", ${5:int rowID}, ${6:int highlightEntry})\n",
+		"prefix": "Edit Menu Entry",
+		"body": "EditMenuEntry(${3|MENU_1,MENU_2|}, \"${4:string text}\", ${5:int rowID}, ${6:bool highlightEntry})\n",
 		"description": [
 			"Edits an entry to menu with the",
 			"\rcontents of text in rowID, and highlighted",
@@ -1318,7 +1331,7 @@
 	},
 
 	"Get text info":{
-		"prefix": "GetTextInfo()",
+		"prefix": "Get Text Info",
 		"body": "GetTextInfo(${3:var store}, ${4|MENU_1,MENU_2|}, ${5:int type}, ${6:int index}, ${7:int offset})\n",
 		"description": [
 			"Gets the data of type from menu using index,",
@@ -1331,13 +1344,13 @@
 	},
 
 	"Draw menu":{
-		"prefix": "DrawMenu()",
+		"prefix": "Draw Menu",
 		"body": "DrawMenu(${3|MENU_1,MENU_2|}, ${4:int XPos}, ${5:int YPos})\n",
 		"description": "Draws menu to XPos & YPos\n\rrelative to the screen"
 	},
 
 	"Draw text":{
-		"prefix": "(v3) DrawText()",
+		"prefix": "(v3) Draw Text",
 		"body": "DrawText(${3|MENU_1,MENU_2|}, ${4:int XPos}, ${5:int YPos}, ${6:int scale}, ${7:int spacing}, ${8:int rowStart}, ${9:int rowCount})\n",
 		"description": [
 			"Draws the contents of rowCount rows",
@@ -1348,31 +1361,37 @@
 	},
 
 	"Get version number":{
-		"prefix": "GetVersionNumber()",
-		"body": "GetVersionNumber(${3|MENU_1,MENU_2|}, ${4:int highlight})\n",
+		"prefix": "Get Version Number",
+		"body": "GetVersionNumber(${3|MENU_1,MENU_2|}, ${4:bool highlight})\n",
 		"description": "Adds a text entry with the game's version\n\ras the text, highlighted if highlight is set"
 	},
 
 	"Send engine callback":{
-		"prefix": "EngineCallback()",
+		"prefix": "(v3) Engine Callback",
 		"body": "EngineCallback(${3:int callbackFuncID})\n",
 		"description": "Sends callback to engine"
 	},
 
-	"Send engine callback w/ two parameters":{
-		"prefix": "(v4) EngineCallback2()",
-		"body": "EngineCallback2(${3:int callbackFuncID}, ${4:int param1}, ${5:int param2})\n",
+	"Call native function":{
+		"prefix": "(v4) Call Native Function",
+		"body": "CallNativeFunction(${3:int callbackFuncID})\n",
+		"description": "Sends callback to engine"
+	},
+
+	"Call native function w/ two parameters":{
+		"prefix": "(v4) Call Native Function 2",
+		"body": "CallNativeFunction2(${3:int callbackFuncID}, ${4:int param1}, ${5:int param2})\n",
 		"description": "Sends callback to engine with 2 parameters"
 	},
 
-	"Send engine callback w/ four parameters":{
-		"prefix": "(v4) EngineCallback4()",
-		"body": "EngineCallback4(${3:int callbackFuncID}, ${4:int param1}, ${5:int param2}, ${6:int param3}, ${7:int param4})\n",
+	"Call native function w/ four parameters":{
+		"prefix": "(v4) Call Native Function 4",
+		"body": "CallNativeFunction4(${3:int callbackFuncID}, ${4:int param1}, ${5:int param2}, ${6:int param3}, ${7:int param4})\n",
 		"description": "Sends callback to engine with 4 parameters"
 	},
 
 	"Read saved RAM":{
-		"prefix": "ReadSaveRAM()",
+		"prefix": "Read SaveRAM",
 		"body": "ReadSaveRAM()\n",
 		"description": [
 			"reads the contents of the save file",
@@ -1381,26 +1400,38 @@
 	},
 
 	"Write saved RAM":{
-		"prefix": "WriteSaveRAM()",
+		"prefix": "Write SaveRAM",
 		"body": "WriteSaveRAM()\n",
 		"description": "writes the contents of the save file on disk"
 	},
 
 	"Load online menu":{
-		"prefix": "(v3) LoadOnlineMenu()",
+		"prefix": "(v3) Load Online Menu",
 		"body": "LoadOnlineMenu(${3:int menuID})\n",
 		"description": "Loads the data for the specified online menu\n\rOnly useful in the original CD 2011"
 	},
 
 	"Set achievement":{
-		"prefix": "(v3) SetAchievement()",
+		"prefix": "(v3) Set Achievement",
 		"body": "SetAchievement(${3:int id}, ${4:int status})\n",
-		"description": "Sets the status of the achievement\n\rwith index of id to status"
+		"description": [
+			"Sets the status of the achievement\n\rwith index of id to status",
+			"(This function become a callback in v4)"
+		]
 	},
 
 	"Set leaderboard":{
-		"prefix": "(v3) SetLeaderBoards()",
-		"body": "SetLeaderBoards(${3:int id}, ${4:int entry})\n",
+		"prefix": "(v3) Set Leader Board",
+		"body": "SetLeaderBoard(${3:int id}, ${4:int entry})\n",
 		"description": "Sets the entry of the leaderboard\n\rwith index of id to entry"
+	},
+
+	"Print to log":{
+		"prefix": "(v4) Print",
+		"body": "Print(${3:message}, ${4:bool isInt}, ${5:bool useEndLine})\n",
+		"description": [
+			"prints a message to log, the message can be a string or a regular value",
+			"depending of isInt"
+		]
 	}
 }
