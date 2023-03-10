@@ -1,0 +1,1518 @@
+{
+	"Setup v3 Script":{
+		"prefix": "v3 Setup",
+		"body": [
+			"// RSDK Project ${3|Sonic CD,Custom v3 Project|}",
+			"// Script Name: $TM_FILENAME_BASE",
+			"// Script Author: ${4:Script Author}",
+			"",
+			"// Aliases",
+			"",
+			"// States",
+			"",
+			"// Custom Aliases",
+			"",
+			"",
+			"// Function declarations",
+			"",
+			"",
+			"sub ObjectMain",
+			"\t$0",
+			"end sub",
+			"",
+			"",
+			"sub ObjectPlayerInteraction",
+			"",
+			"end sub",
+			"",
+			"",
+			"sub ObjectDraw",
+			"",
+			"end sub",
+			"",
+			"",
+			"sub ObjectStartup",
+			"",
+			"end sub",
+			"",
+			"",
+			"// ========================",
+			"// Editor Subs",
+			"// ========================",
+			"",
+			"sub RSDKDraw",
+			"\tDrawSprite(0)",
+			"end sub",
+			"",
+			"sub RSDKLoad",
+			"\tLoadSpriteSheet(\"Global/Display.gif\")",
+			"\tSpriteFrame(-16, -16, 32, 32, 1, 143)\t\t// #0 - \"Script\" Icon",
+			"\t",
+			"\tSetVariableAlias(ALIAS_VAR_PROPVAL, \"unused\")",
+			"end sub"
+		],
+		"description": "Set basic format for a v3 script"
+	},
+
+	"Setup v4 Script":{
+		"prefix": "v4 Setup",
+		"body": [
+			"// ${3|Sonic 1,Sonic 2,Custom v4 Project|}",
+			"// Script Name: $TM_FILENAME_BASE",
+			"// Script Author: ${4:Script Author}",
+			"",
+			"// ========================",
+			"// Aliases",
+			"// ========================",
+			"",
+			"// States",
+			"",
+			"// Custom Aliases",
+			"",
+			"",
+			"// ========================",
+			"// Function Declarations",
+			"// ========================",
+			"",
+			"",
+			"// ========================",
+			"// Static Values",
+			"// ========================",
+			"",
+			"",
+			"// ========================",
+			"// Tables",
+			"// ========================",
+			"",
+			"",
+			"// ========================",
+			"// Function Definitions",
+			"// ========================",
+			"",
+			"",
+			"// ========================",
+			"// Events",
+			"// ========================",
+			"",
+			"event ObjectUpdate",
+			"\t$0",
+			"end event",
+			"",
+			"",
+			"event ObjectDraw",
+			"",
+			"end event",
+			"",
+			"",
+			"event ObjectStartup",
+			"",
+			"end event",
+			"",
+			"",
+			"// ========================",
+			"// Editor Events",
+			"// ========================",
+			"",
+			"event RSDKDraw",
+			"\tDrawSprite(0)",
+			"end event",
+			"",
+			"event RSDKLoad",
+			"\tLoadSpriteSheet(\"Global/Display.gif\")",
+			"\tSpriteFrame(-16, -16, 32, 32, 1, 143)\t\t// #0 - \"Script\" Icon",
+			"\t",
+			"\tSetVariableAlias(ALIAS_VAR_PROPVAL, \"unused\")",
+			"end event"
+		],
+		"description": "Set basic format for a v4 script"
+	},
+
+	"v3 Sub Events": {
+		"prefix": "(v3) sub Event",
+		"body": [
+			"sub ${3|ObjectMain,ObjectDraw,ObjectPlayerInteraction,ObjectStartup|}",
+			"\t$0",
+			"end sub"
+		],
+		"description": [
+		"ObjectMain - Calls once every frame per object",
+		"\rif priority allows for it\n",
+		"ObjectDraw - Calls once every frame per object",
+		"\rif priority allows for it. The order is based",
+		"\ron the value of Object.DrawOrder\n",
+		"ObjectPlayerInteraction - Calls once every frame per object",
+		"\rif priority allows for it",
+		"\rand Player.ObjectInteractions is enabled\n",
+		"ObjectStartup - Calls once per object type",
+		"\rwhen the stage loads.",
+		"\rUsed for loading sheets, SpriteFrames",
+		"\rand change behaviour based on property"
+		]
+	},
+
+	"v4 Events": {
+		"prefix": "(v4) Events",
+		"body": [
+			"event ${3|ObjectUpdate,ObjectDraw,ObjectStartup|}",
+			"\t$0",
+			"end event"
+		],
+		"description": [
+		"ObjectUpdate - Calls once every frame per object",
+		"\rif priority allows for it\n",
+		"ObjectDraw - Calls once every frame per object",
+		"\rif priority allows for it. The order is based",
+		"\ron the value of Object.DrawOrder\n",
+		"ObjectStartup - Calls once per object type",
+		"\rwhen the stage loads.",
+		"\rUsed for loading sheets, SpriteFrames",
+		"\rand change behaviour based on property"
+		]
+	},
+
+	"Tips":{
+		"prefix": "RetroScript Tips",
+		"body": [
+			"// -Indexed arrays can have a '+' or '-' added to refer to the next or previous object in the level object list",
+			"\r// -While their name give an indication of for what they should be used, the purpose of a variable is not set in stone",
+			"\r// -Be careful with usage of TempValues, since they are used for all objects, a constant miss-use of them can break behaviour of objects",
+			"\r// -Object.XPos and Object.YPos use floating points, the last 4 zeroes on the value are sub-pixel values",
+			"\r// -Due to how the engine works, using iXPos or iYPos at any point will truncate the sub-pixel value of XPos and YPos in the object\n"
+		],
+		"description": "Just some general tips"
+
+	},
+
+	"Add v3 callback aliases":{
+		"prefix": "(v3) Callback aliases",
+		"body": [
+			"// Engine Callbacks aliases",
+			"#alias 2    : CALLBACK_TATTACK_NOTIFY_ENTER",
+			"#alias 3    : CALLBACK_TATTACK_NOTIFY_EXIT",
+			"#alias 6    : CALLBACK_RESTART_SELECTED",
+			"#alias 7    : CALLBACK_EXIT_SELECTED",
+			"#alias 13   : CALLBACK_PAUSE_REQUESTED",
+			"#alias 15   : CALLBACK_STAFF_CREDITS",
+			"",
+			"#alias 4097 : CALLBACK_SET1P",
+			"#alias 4098 : CALLBACK_SET2P\n"
+		],
+		"description": "Add alias in script of the most used engine states\n\rplus SET1P and 2P, which helps adding an AI player"
+	},
+
+	"Add v3 tileinfo aliases":{
+		"prefix": "(v3) Tileinfo aliases",
+		"body": [
+			"// Tileinfo Aliases",
+			"#alias 0 : TILEINFO_INDEX",
+			"#alias 1 : TILEINFO_DIRECTION",
+			"#alias 2 : TILEINFO_VISUALPLANE",
+			"#alias 3 : TILEINFO_SOLIDITYA",
+			"#alias 4 : TILEINFO_SOLIDITYB",
+			"#alias 5 : TILEINFO_FLAGSA",
+			"#alias 6 : TILEINFO_ANGLEA",
+			"#alias 7 : TILEINFO_FLAGSB",
+			"#alias 8 : TILEINFO_ANGLEB\n"
+		],
+		"description": "Add alias in script for usage in TileInfo funcs\n\rFLAGSB and ANGLEB are read-only"
+	},
+
+	"Add v3 face flag aliases":{
+		"prefix": "(v3) Face aliases",
+		"body": [
+			"// Face Aliases",
+			"#alias 0 : FACE_TEXTURED_3D",
+			"#alias 1 : FACE_TEXTURED_2D",
+			"#alias 2 : FACE_COLOURED_3D",
+			"#alias 3 : FACE_COLOURED_2D\n"
+		],
+		"description": "Add alias in script for usage in FaceBuffer.Flag"
+	},
+
+	"Add v3 collision side aliases":{
+		"prefix": "(v3) CSIDE aliases",
+		"body": [
+			"// Collision Side Aliases",
+			"#alias 0 : CSIDE_FLOOR",
+			"#alias 1 : CSIDE_LWALL",
+			"#alias 2 : CSIDE_RWALL",
+			"#alias 3 : CSIDE_ROOF\n"
+		],
+		"description": "Add alias in script for usage with ObjectTileCollision"
+	},
+
+	"Add v3 collision mode aliases":{
+		"prefix": "(v3) CMODE aliases",
+		"body": [
+			"// Collision Mode Aliases",
+			"#alias 0 : CMODE_FLOOR",
+			"#alias 1 : CMODE_LWALL",
+			"#alias 2 : CMODE_ROOF",
+			"#alias 3 : CMODE_RWALL\n"
+		],
+		"description": "Add alias in script for usage with ObjectTileCollision"
+	},
+
+	"Add v3 priority aliases":{
+		"prefix": "(v3) Priority aliases",
+		"body": [
+			"// Priority Aliases",
+			"#alias 0 : PRIORITY_BOUNDS         // Object updates within 128 pixels of the screen border left/right and 256 pixels up/down",
+			"#alias 1 : PRIORITY_ACTIVE         // Object will always update, unless paused/frozen",
+			"#alias 2 : PRIORITY_ALWAYS         // Object will always update",
+			"#alias 3 : PRIORITY_XBOUNDS        // Object updates within 128 pixels of the screen border left/right",
+			"#alias 4 : PRIORITY_BOUNDS_DESTROY // Object updates within 128 pixels of the screen border left/right, object will be set to Blank Object if the check fails",
+			"#alias 5 : PRIORITY_INACTIVE       // Object never updates\n"
+		],
+		"description": "Add alias in script for usage with Object.Priority"
+	},
+
+	"Add v3 ink effect aliases":{
+		"prefix": "(v3) InkEffect aliases",
+		"body": [
+			"// Ink Effect Aliases",
+			"#alias 0 : INK_NONE   // Disables transparency",
+			"#alias 1 : INK_BLEND  // Uses half transparency",
+			"#alias 2 : INK_ALPHA  // Uses transparency value of Object.Alpha",
+			"#alias 3 : INK_ADD    // Uses transparency value of Object.Alpha, and a bright tint",
+			"#alias 4 : INK_SUB    // Uses transparency value of Object.Alpha, and a dark tint\n"
+		],
+		"description": "Add alias in script for usage with Object.InkEffect"
+	},
+
+	"Add v3 misc aliases":{
+		"prefix": "(v3) Misc aliases",
+		"body": [
+			"// Misc aliases",
+			"#alias  0 : GRAVITY_GROUND",
+			"#alias  1 : GRAVITY_AIR\n",
+			"#alias  0 : COLLISION_PLANE_A",
+			"#alias  1 : COLLISION_PLANE_B\n",
+			"#alias -1 : CONTROL_DISABLED",
+			"#alias  0 : CONTROL_ENABLED\n",
+			"#alias  0 : GAMEMODE_NOSAVE",
+			"#alias  1 : GAMEMODE_SAVEGAME",
+			"#alias  2 : GAMEMODE_TIMEATTACK",
+			"#alias  3 : GAMEMODE_DEMOMODE\n"
+		],
+		"description": "Add alias in script for misc stuff"
+	},
+	
+	"Add v3 camera aliases":{
+		"prefix": "(v3) Camera aliases",
+		"body": [
+			"// Camera aliases",
+			"#alias  0 : CAMERASTYLE_FOLLOW",
+			"#alias  1 : CAMERASTYLE_EXTENDED",
+			"#alias  2 : CAMERASTYLE_EXTENDED_OFFSET_L",
+			"#alias  3 : CAMERASTYLE_EXTENDED_OFFSET_R",
+			"#alias  4 : CAMERASTYLE_HLOCKED\n"
+		],
+		"description": "Add alias in script for camera styles"
+	},
+
+	"Add v4 tile info aliases":{
+		"prefix": "(v4) Tileinfo aliases",
+		"body": [
+			"// Tileinfo aliases",
+			"private alias 0 : TILEINFO_INDEX",
+			"private alias 1 : TILEINFO_DIRECTION",
+			"private alias 2 : TILEINFO_VISUALPLANE",
+			"private alias 3 : TILEINFO_SOLIDITYA",
+			"private alias 4 : TILEINFO_SOLIDITYB",
+			"private alias 5 : TILEINFO_FLAGSA",
+			"private alias 6 : TILEINFO_ANGLEA",
+			"private alias 7 : TILEINFO_FLAGSB",
+			"private alias 8 : TILEINFO_ANGLEB\n"
+		],
+		"description": "Add alias in script for usage in TileInfo funcs\n\rFLAGSB and ANGLEB are read-only"
+	},
+	
+	"Add v4 face flag aliases":{
+		"prefix": "(v4) Face aliases",
+		"body": [
+			"// Face Aliases",
+			"private alias 0 : FACE_TEXTURED_3D",
+			"private alias 1 : FACE_TEXTURED_2D",
+			"private alias 2 : FACE_COLOURED_3D",
+			"private alias 3 : FACE_COLOURED_2D",
+			"private alias 4 : FACE_FADED",
+			"private alias 5 : FACE_TEXTURED_C",
+			"private alias 6 : FACE_TEXTURED_D",
+			"private alias 7 : FACE_SPRITE3D\n"
+		],
+		"description": "Add alias in script for usage in FaceBuffer.Flag"
+	},
+
+	"Add v4 collision side aliases":{
+		"prefix": "(v4) CSIDE aliases",
+		"body": [
+			"// Collision Side Aliases",
+			"private alias 0 : CSIDE_FLOOR",
+			"private alias 1 : CSIDE_LWALL",
+			"private alias 2 : CSIDE_RWALL",
+			"private alias 3 : CSIDE_ROOF\n"
+		],
+		"description": "Add alias in script for usage with ObjectTileCollision"
+	},
+	
+	"Add v4 collision mode aliases":{
+		"prefix": "(v4) CMODE aliases",
+		"body": [
+			"// Collision Mode Aliases",
+			"private alias 0 : CMODE_FLOOR",
+			"private alias 1 : CMODE_LWALL",
+			"private alias 2 : CMODE_ROOF",
+			"private alias 3 : CMODE_RWALL\n"
+		],
+		"description": "Add alias in script for usage with ObjectTileCollision"
+	},
+
+	"Add v4 priority aliases":{
+		"prefix": "(v4) Priority aliases",
+		"body": [
+			"// Priority Aliases",
+			"private alias 0 : PRIORITY_BOUNDS         // Object updates within 128 pixels of the screen border left/right and 256 pixels up/down",
+			"private alias 1 : PRIORITY_ACTIVE         // Object will always update, unless paused/frozen",
+			"private alias 2 : PRIORITY_ALWAYS         // Object will always update",
+			"private alias 3 : PRIORITY_XBOUNDS        // Object updates within 128 pixels of the screen border left/right",
+			"private alias 4 : PRIORITY_BOUNDS_DESTROY // Object updates within 128 pixels of the screen border left/right, object will be set to Blank Object if the check fails",
+			"private alias 5 : PRIORITY_INACTIVE       // Object never updates",
+			"private alias 6 : PRIORITY_BOUNDS_SMALL   // Object updates within 32 pixels of the screen border left/right and 128 pixels up/down",
+			"private alias 7 : PRIORITY_ACTIVE_SMALL   // Object will always update, unless paused/frozen. The bounds ofobject.outOfBounds are much smaller\n"
+		],
+		"description": "Add alias in script for usage with object.priority"
+	},
+
+	"Add v4 inkeffect aliases":{
+		"prefix": "(v4) inkEffect aliases",
+		"body": [
+			"// Ink Effect Aliases",
+			"private alias 0 : INK_NONE   // Disables transparency",
+			"private alias 1 : INK_BLEND  // Uses half transparency",
+			"private alias 2 : INK_ALPHA  // Uses transparency value of Object.Alpha",
+			"private alias 3 : INK_ADD    // Uses transparency value of Object.Alpha, and a bright tint",
+			"private alias 4 : INK_SUB    // Uses transparency value of Object.Alpha, and a dark tint\n"
+		],
+		"description": "Add alias in script for usage with object.inkEffect"
+	},
+
+	"Add v4 direction aliases":{
+		"prefix": "(v4) direction aliases",
+		"body": [
+			"// Direction Aliases",
+			"private alias 0 : FLIP_NONE  // Sprite's normal direction",
+			"private alias 1 : FLIP_X     // Sprite flipped horizontally",
+			"private alias 2 : FLIP_Y     // Sprite flipped vertically",
+			"private alias 3 : FLIP_XY    // Sprite flipped horizontally and vertically\n"
+		],
+		"description": "Add alias in script for usage with object.direction."
+	},
+
+	"Add v4 engine state aliases":{
+		"prefix": "(v4) engine state aliases",
+		"body": [
+			"// Engine State Aliases",
+			"private alias 0 : ENGINE_DEVMENU",
+			"private alias 1 : ENGINE_MAINGAME",
+			"private alias 2 : ENGINE_INITDEVMENU",
+			"private alias 3 : ENGINE_WAIT",
+			"private alias 4 : ENGINE_SCRIPTERROR",
+			"private alias 5 : ENGINE_INITPAUSE",
+			"private alias 6 : ENGINE_EXITPAUSE",
+			"private alias 7 : ENGINE_ENDGAME",
+			"private alias 8 : ENGINE_RESETGAME\n"
+		],
+		"description": "Add alias in script for usage with object.direction"
+	},
+
+	"Add v4 collision aliases":{
+		"prefix": "(v4) collision aliases",
+		"body": [
+			"// Collision Aliases",
+			"private alias 0 : COL_NONE",
+			"private alias 1 : COL_TOP",
+			"private alias 2 : COL_LEFT",
+			"private alias 3 : COL_RIGHT\n"
+		],
+		"description": "Add alias in script for collision."
+	},
+
+	"Add v4 misc aliases":{
+		"prefix": "(v4) Misc aliases",
+		"body": [
+			"// Misc aliases",
+			"private alias  0 : GRAVITY_GROUND",
+			"private alias  1 : GRAVITY_AIR\n",
+			"private alias  0 : PATH_A",
+			"private alias  1 : PATH_B\n",
+			"private alias -1 : CONTROLMODE_NONE",
+			"private alias  0 : CONTROLMODE_NORMAL\n",
+			"private alias  0 : GROUP_ALL\n"
+		],
+		"description": "Add alias in script for misc stuff"
+	},
+
+	"Add v4 camera aliases":{
+		"prefix": "(v4) Camera aliases",
+		"body": [
+			"// Camera aliases",
+			"private alias  0 : CAMERASTYLE_FOLLOW",
+			"private alias  1 : CAMERASTYLE_EXTENDED",
+			"private alias  2 : CAMERASTYLE_EXTENDED_OFFSET_L",
+			"private alias  3 : CAMERASTYLE_EXTENDED_OFFSET_R",
+			"private alias  4 : CAMERASTYLE_HLOCKED\n"
+		],
+		"description": "Add alias in script for camera styles"
+	},
+
+	"Alias":{
+		"prefix": "Alias",
+		"body": "${3|#alias,private alias,public alias|} ${4:var} : ${5:alias}\n",
+		"description": [
+			"Creates a new alias, it will",
+			"\rbe replaced with var on compile time",
+			"\r#alias is the format used in v3 and is always private",
+			"\rpublic/private alias is v4's"
+		]
+	},
+
+	"v3 Platform Types":{
+		"prefix": "(v3) #Platform",
+		"body": [
+			"#platform: ${3|Standard,Mobile,Use_Standalone,Use_Origins,SW_Renderer,HW_Renderer,Use_Haptics,No_Haptics,Use_Decomp|}",
+			"\t$0",
+			"#endplatform\n"
+			],
+		"description": [
+			"Skip over lines of code if",
+			"\rtype does not match with what",
+			"\rthe bytecode is being compiled for."
+		]
+	},
+
+	"v4 Platform Types":{
+		"prefix": "(v4) #Platform",
+		"body": [
+			"#platform: ${4|STANDARD,MOBILE,USE_STANDALONE,USE_ORIGINS,SW_RENDERING,HW_RENDERING,USE_F_FEEDBACK,NO_F_FEEDBACK,USE_NETWORKING,USE_DECOMP|}",
+			"\t$0",
+			"#endplatform\n"
+		],
+		"description": [
+			"Skip over lines of code if",
+			"\rtype does not match with what",
+			"\rthe bytecode is being compiled for."
+		]
+	},
+
+	"CheckEqual": {
+		"prefix": "Check Equal",
+		"body": "CheckEqual(${3:A}, ${4:B})\n",
+		"description": [
+			"Boolean expression.\n",
+			"\rmakes CheckResult true if A is the same as B"
+		]
+	},
+
+	"CheckNotEqual": {
+		"prefix": "Check Not Equal",
+		"body": "CheckNotEqual(${3:A}, ${4:B})\n",
+		"description": [
+			"Boolean expression.",
+			"\rmakes CheckResult true if A is not the same as B"
+		]
+	},
+
+	"CheckGreater": {
+		"prefix": "Check Greater",
+		"body": "CheckGreater(${3:A}, ${4:B})\n",
+		"description": [
+			"Boolean expression.",
+			"\rmakes CheckResult true if A is greater than B"
+		]
+	},
+
+	"CheckLower": {
+		"prefix": "Check Lower",
+		"body": "CheckLower(${3:A}, ${4:B})\n",
+		"description": [
+			"Boolean expression.",
+			"\rmakes CheckResult true if A is lower than B"
+		]
+	},
+
+	"if statement": {
+		"prefix": "if-statement",
+		"body": [
+			"if ${3:var} ${4:bool expression} ${5:int/var/alias}",
+			"\t$0",
+			"",
+			"end if"
+		],
+		"description": "if statement"
+	},
+
+	"if-else statement": {
+		"prefix": "if-else-statement",
+		"body": [
+			"if ${3:var} ${4:bool expression} ${5:int/var/alias}",
+			"\t$0",
+			"else",
+			"\t",
+			"end if"
+		],
+		"description": "if-else statement"
+	},
+
+	"switch statement": {
+		"prefix": "switch-statement",
+		"body": [
+			"switch ${3:var}",
+			"case ${4:int/alias}",
+			"\t$0",
+			"\tbreak\n",
+			"end switch"
+		],
+		"description": [
+			"Switch statement",
+			"\r'default' is optional.",
+			"\r'break' is used to stop fallthrough"
+		]
+	},
+
+	"while statement": {
+		"prefix": "while-statement",
+		"body": [
+			"while ${3:var} ${4:bool expression} ${5:int/var/alias}",
+			"\t$0",
+			"loop"
+		],
+		"description": "While statement"
+	},
+
+	"for-each statement": {
+		"prefix": "(v4) foreach-statement",
+		"body": [
+			"foreach(TypeName[${3:objectName}], ${4:int store}, ${5|ALL_ENTITIES,ACTIVE_ENTITIES|})",
+			"\t$0",
+			"next"
+		],
+		"description": [
+			"foreach statement",
+			"\riterates every TypeName object",
+			"\rand sets 'store' to the object's slotID.",
+			"\r'type' by default are the available three"
+		]
+	},
+
+	"Set new music track":{
+		"prefix": "Set Music Track",
+		"body": "SetMusicTrack(\"${3:string filePath}\", ${4:int trackID}, ${5:int loopPoint})\n",
+		"description": [
+			"Loads an ogg formatted file from",
+			"\rData/Music/[filePath] into trackList",
+			"\rslot trackID, with a loop point of loopPoint",
+			"\r(0 = no loop, 1 = loop from start, anything else is a sample to loop)"
+		]
+	},
+
+	"Play music":{
+		"prefix": "Play Music",
+		"body": "PlayMusic(${3:int trackID})\n",
+		"description": "Plays the music track loaded into the slot trackID"
+	},
+
+	"Stop music":{
+		"prefix": "Stop Music",
+		"body": "StopMusic()\n",
+		"description": "Stops the currently playing music track"
+	},
+
+	"Pause music":{
+		"prefix": "Pause Music",
+		"body": "PauseMusic()\n",
+		"description": "Pauses the currently playing music track"
+	},
+
+	"Resume music":{
+		"prefix": "Resume Music",
+		"body": "ResumeMusic()\n",
+		"description": "Resumes paused music"
+	},
+
+	"Swap music track":{
+		"prefix": "(v4) Swap Music Track",
+		"body": "SwapMusicTrack(\"${3:string filePath}\", ${4:int trackID}, ${5:int loopPoint}, ${6:int ratio})\n",
+		"description": [
+			"Similar to SetMusicTrack() and PlayMusic()",
+			"\rbut starts at a position based on ratio.",
+			"\rratio uses a 10000-based value",
+			"\rso 10000 = 1.0 music speed, 5000 = 0.5, etc.",
+			"\rUsed more commonly with speed shoes"
+		]
+	},
+
+	"Play sfx":{
+		"prefix": "Play Sfx",
+		"body": "PlaySfx(${3:int sfx}, ${4:bool loop})\n",
+		"description": "Plays the sfx with matching index (gameconfig index on v3), looping if the bool is true"
+	},
+
+	"Stop sfx":{
+		"prefix": "Stop Sfx",
+		"body": "StopSfx(${3:int sfx})\n",
+		"description": "Stops the sfx with matching index (gameconfig index on v3)"
+	},
+
+	"Play stage sfx":{
+		"prefix": "(v3) Play Stage Sfx",
+		"body": "PlayStageSfx(${3:int sfx}, ${4:bool loop})\n",
+		"description": [
+			"Plays the sfx with matching stageconfig index, looping if bool is true",
+			"merged in v4 with PlaySfx"
+		]
+	},
+
+	"Stop stage sfx":{
+		"prefix": "(v3) Stop Stage Sfx",
+		"body": "StopStageSfx(${3:int sfx})\n",
+		"description": [
+			"Stops the sfx with matching stageconfig index",
+			"merged in v4 with StopSfx"
+		]
+	},
+
+	"Set sfx attributes":{
+		"prefix": "Set Sfx Attributes",
+		"body": "SetSfxAttributes(${3:int sfx}, ${4:int loopCount}, ${5:int pan})\n",
+		"description": [
+			"Sets the amount of times for sfx to loop to loopCount",
+			"\r(-1 to leave it unchanged) and the panning of sfx to pan",
+			"\r(-100 to 100 for left to right, with 0 being balanced)"
+		]
+	},
+
+	"Load SpriteSheet":{
+		"prefix": "Load SpriteSheet",
+		"body": "LoadSpriteSheet(\"${3:Filepath}\")\n",
+		"description": [
+			"Loads a spritesheet from Data/Sprites/[Filepath]",
+			"\rand sets Object.SpriteSheet to the sheet's ID"
+		]
+	},
+
+	"Remove SpriteSheet":{
+		"prefix": "Remove Sprite Sheet",
+		"body": "RemoveSpriteSheet(\"${3:Filepath}\")\n",
+		"description": "Removes a sheet that matches Filepath if it exists"
+	},
+
+	"Add SpriteFrame":{
+		"prefix": "Sprite Frame",
+		"body": "SpriteFrame(${3:int PivotX}, ${4:int PivotY}, ${5:int Width}, ${6:int Height}, ${7:int sprX}, ${8:int sprY})\n",
+		"description": "Creates a spriteframe with the specified values"
+	},
+
+	"Edit Frame":{
+		"prefix": "Edit Frame",
+		"body": "EditFrame(${3:int frame}, ${4:int PivotX}, ${5:int PivotY}, ${6:int Width}, ${7:int Height}, ${8:int sprX}, ${9:int sprY})\n",
+		"description": [
+			"Creates a spriteframe with the specified values",
+			"\rthis feature is not in the 2011 steam release"
+		]
+	},
+
+	"Draw Sprite in object position":{
+		"prefix": "Draw Sprite",
+		"body": "DrawSprite(${3:int frame})\n",
+		"description": "Draw sprite frame at object's X and Y position"
+	},
+
+	"Draw Sprite w/ custom position":{
+		"prefix": "Draw Sprite XY",
+		"body": "DrawSpriteXY(${3:int frame}, ${4:int XPos}, ${5:int YPos})\n",
+		"description": [
+			"Draw sprite frame to a specified X and Y position",
+			"the position is interpreted as world-space (0x10000 = 1px)"
+		]
+	},
+
+	"Draw Sprite w/ custom screen position":{
+		"prefix": "Draw Sprite Screen XY",
+		"body": "DrawSpriteScreenXY(${3:int frame}, ${4:int iXPos}, ${5:int iYPos})\n",
+		"description": [
+			"Draw sprite frame to a specified X and Y position",
+			"the position is interpreted as screen-space (1px = 1px)"
+		]
+	},
+
+	"Draw Sprite w/ visual effects in custom position":{
+		"prefix": "Draw Sprite FX",
+		"body": "DrawSpriteFX(${3:int frame}, ${4|FX_SCALE,FX_ROTATE,FX_ROTOZOOM,FX_INK,FX_TINT,FX_FLIP|}, ${5:int XPos}, ${6:int YPos})\n",
+		"description": [
+			"Draw sprite frame to a specified X and Y position",
+			"\rposition is interpreted as world-space (0x10000 = 1px)"
+		]
+	},
+
+	"Draw Sprite w/ visual effects in custom screen position":{
+		"prefix": "Draw Sprite Screen FX",
+		"body": "DrawSpriteScreenFX(${3:int frame}, ${4|FX_SCALE,FX_ROTATE,FX_ROTOZOOM,FX_INK,FX_TINT,FX_FLIP|}, ${5:int iXPos}, ${6:int iYPos})\n",
+		"description": [
+			"Draw sprite frame to a specified X and Y position",
+			"\rposition is interpreted as screen-space (1 = 1px)"
+		]
+	},
+
+	"Draw tinted rectangle":{
+		"prefix": "Draw Tint Rect",
+		"body": "DrawTintRect(${3:int iXPos}, ${4:int iYPos}, ${5:int width}, ${6:int height})\n",
+		"description": [
+			"Draws a tinted rectangle with a size of width,height",
+			"\rat ixPos and iYPos"
+		]
+	},
+
+	"Draw Numbers":{
+		"prefix": "Draw Numbers",
+		"body": "DrawNumbers(${3:int startingFrame}, ${4:int iXPos}, ${5:int iYPos}, ${6:int value}, ${7:int digitCnt}, ${8:int spacing}, ${9:bool showAllDigits})\n",
+		"description": [
+			"Draws values using startingFrame as the",
+			"\rstarting point at iXPos and iYPos",
+			"\rwith spacing pixels between frames\n",
+			"\rif showAllDigits is false, only draw valid digits",
+			"\rotherwise, draw digitCnt digits with extras as 0"
+		]
+	},
+
+	"Draw Act Name":{
+		"prefix": "Draw Act Name",
+		"body": "DrawActName(${3:int startingFrame}, ${4:int iXPos}, ${5:int iYPos}, ${6:int align}, ${7:bool allowLowerCase}, ${8:int space width}, ${9:int spacing})\n",
+		"description": [
+			"Draws the loaded stage's act name using 26 frames",
+			"\rstarting from startingFrame at iXPos and iYPos",
+			"\rwith spacing pixels between each letter\n",
+			"\ralign determines how the act name should be drawn",
+			"\rwith 0 drawing the whole name, while 1 and 2 picks",
+			"\rthe first and second words respectively and draw separate",
+			"\r(while v3 has access to this,\n CD titlecards don't use this system by default)"
+		]
+	},
+
+	"Draw rectangle":{
+		"prefix": "Draw Rect",
+		"body": "DrawRect(${3:int iXPos}, ${4:int iYPos}, ${5:int width}, ${6:int height}, ${7:int Red}, ${8:int Green}, ${9:int Blue}, ${10:int Alpha})\n",
+		"description": [
+			"Draws a rectangle with a size of width,height\nat ixPos and iYPos,",
+			"\rwith a color of Red, Green, Blue along Alpha"
+		]
+	},
+
+	"Load Animation":{
+		"prefix": "Load Animation",
+		"body": "LoadAnimation(\"${3:AniPath}\")\n",
+		"description": [
+			"Loads an animation from Data/Animations/[AniPath]",
+			"\rfor the object to use"
+		]
+	},
+
+	"Draw Player Animation":{
+		"prefix": "(v3) Draw Player Animation",
+		"body": "DrawPlayerAnimation()\n",
+		"description": [
+			"Draws the player at it's X and Y position",
+			"\rbased on the loaded animation and",
+			"\rObject.Frame/Object.Animation.\n",
+			"\rv3 Exclusive, merged with DrawObjectAnimation in v4"
+		]
+	},
+
+	"Draw Object Animation":{
+		"prefix": "Draw Object Animation",
+		"body": "DrawObjectAnimation()\n",
+		"description": [
+			"Draws the object at it's X and Y position",
+			"\rbased on the loaded animation and",
+			"\rObject.Frame/Object.Animation.\n",
+			"\rObjects that use animation files cannot use transparency or scale\n",
+			"\rin v3 rotation is not possible on objects with",
+			"\ranimation files aside from the player"
+		]
+	},
+
+	"Load Video":{
+		"prefix": "(v3) Load Video",
+		"body": "LoadVideo(\"${3:VideoName}\")\n",
+		"description": [
+			"Load a video with the name of VideoName",
+			"\rfrom Videos/. If the filename extension is .rsv",
+			"\ran RSV file will load instead"
+		]
+	},
+
+	"Next RSV Frame":{
+		"prefix": "(v3) Next Video Frame",
+		"body": "NextVideoFrame()\n",
+		"description": "Advances the video frame from an RSV file"
+	},
+
+	"Clear Draw List":{
+		"prefix": "Clear Draw List",
+		"body": "ClearDrawList(${3:int layer})\n",
+		"description": "Removes all entries in drawList layer"
+	},
+
+	"Add entity reference in Draw List":{
+		"prefix": "Add Draw List Entity Ref",
+		"body": "AddDrawListEntityRef(${3:int layer}, ${4:int ObjectPos})\n",
+		"description": "Adds ObjectPos to the drawList layer"
+	},
+
+	"Get entity reference in Draw List":{
+		"prefix": "Get Draw List Entity Ref",
+		"body": "GetDrawListEntityRef(${3:var store}, ${4:int layer}, ${5:int ObjectPos})\n",
+		"description": [
+			"Gets ObjectPos value in drawList layer",
+			"\rand stores it in store"
+		]
+	},
+
+	"Set entity reference in Draw List":{
+		"prefix": "Set Draw List Entity Ref",
+		"body": "SetDrawListEntityRef(${3:int newValue}, ${4:int layer}, ${5:int ObjectPos})\n",
+		"description": [
+			"Sets ObjectPos value in drawList layer",
+			"\rto the value of newValue"
+		]
+	},
+
+	"Load Palette":{
+		"prefix": "Load Palette",
+		"body": "LoadPalette(\"${3:string filePath}\", ${4:int palBankID}, ${5:int startPalIndex}, ${6:int startIndex}, ${7:int endIndex})\n",
+		"description": [
+			"Loads a palette from Data/Palettes/[filePath]",
+			"into a palette bank starting from startPalIndex,",
+			"with a file offset of startIndex and reading all",
+			"colors through to endIndex",
+			"HW Renderer cannot use this function"
+		]
+	},
+
+	"Rotate Palette":{
+		"prefix": "Rotate Palette",
+		"body": "RotatePalette(${3:int palBankID}, ${4:int startIndex}, ${5:int endIndex}, ${6:int rotationDirection})\n",
+		"description": [
+			"Rotates all colours in the palette bank",
+			"starting from startIndex through to endIndex,",
+			"it will move left if rotationDirection is 0",
+			"otherwise it will move right",
+			"HW Renderer cannot use this function"
+		]
+	},
+
+	"Set Screen Fade":{
+		"prefix": "Set Screen Fade",
+		"body": ["SetScreenFade(${3:int Red}, ${4:int Green}, ${5:int Blue}, ${6:int Alpha})\n"],
+		"description": [
+			"Sets the fade out effect",
+			"\rbased on Red, Blue, Green and Alpha values"
+		]
+	},
+
+	"Set Active Palette":{
+		"prefix": "Set Active Palette",
+		"body": "SetActivePalette(${3:int palBankID}, ${4:int startLine}, ${5:int endLine})\n",
+		"description": [
+			"Sets the active palette for palBankID",
+			"\rfor all lines from startLine through to endLine"
+		]
+	},
+
+	"Set Palette Entry":{
+		"prefix": "(v4) Set Palette Entry",
+		"body": "SetPaletteEntry(${3:int palBankID}, ${4:int palIndex}, ${5:int color})\n",
+		"description": [
+			"Sets the palette entry in palBankID",
+			"\rat palIndex to the value of 'color'",
+			"\rThe format for color is 0xRRGGBB"
+		]
+	},
+
+	"Get Palette Entry":{
+		"prefix": "(v4) Get Palette Entry",
+		"body": "GetPaletteEntry(${3:int palBankID}, ${4:int palIndex}, ${5:var palStore})\n",
+		"description": [
+			"Gets the palette entry in palBankID",
+			"\rat palIndex and stores it in palStore"
+		]
+	},
+
+	"Set Palette Fade":{
+		"prefix": "Set Palette Fade",
+		"body": "SetPaletteFade(${3:int destPalBankID}, ${4:int Red}, ${5:int Green}, ${6:int Blue}, ${7:int blendAmount}, ${8:int startIndex}, ${9:int endIndex})\n",
+		"description": [
+			"Blends the currently active palette with",
+			"\rRed, Green and Blue by blendAmount,",
+			"\rand stores it in destPalBankID,",
+			"\rstarting at palIndex and",
+			"\rcontinuing through to endIndex"
+		]
+	},
+
+	"v3 Copy Palette":{
+		"prefix": "(v3) Copy Palette",
+		"body": "CopyPalette(${3:int srcPal}, ${4:int destPal})\n",
+		"description": "Copies srcPal into destPal"
+	},
+
+	"v4 Copy Palette":{
+		"prefix": "(v4) Copy Palette",
+		"body": "CopyPalette(${3:int srcPal}, ${4:int srcPalStart}, ${5:int destPal}, ${6:int destPalStart}, ${7:int count})\n",
+		"description": [
+			"Copies count colors from srcPal",
+			"\rstarting at srcPalStart.",
+			"\rTo destPal, starting at destPalStart"
+		]
+	},
+
+	"Clear Screen":{
+		"prefix": "Clear Screen",
+		"body": "ClearScreen(${3:int clearIndex})\n",
+		"description": [
+			"Clears all pixels on screen with",
+			"\rclearIndex color in the active palette"
+		]
+	},
+
+	"Create Temporary Object": {
+		"prefix": "Create Temp Object",
+		"body": "CreateTempObject(${3:int objectType}, ${4:int propertyValue}, ${5:int XPos}, ${6:int YPos})\n",
+		"description": [
+			"Creates a temporary object specified",
+			"\rby objectType, propertyValue, XPos and YPos",
+			"\rnear the end of the object list and sets",
+			"\rTempObjectPos to the created object slotID.\n",
+			"\rThis should only be used for misc objects",
+			"\rthat aren't required for too long in the stage"
+		]
+	},
+
+	"Reset object Entity": {
+		"prefix": "Reset Object Entity",
+		"body": "ResetObjectEntity(${3:int objectSlot}, ${4:int objectType}, ${5:int propertyValue}, ${6:int XPos}, ${7:int YPos})\n",
+		"description": [
+			"Resets objectSlot object to the type",
+			"\rand position specified by type,\r\npropertyValue, XPos and YPos"
+		]
+	},
+
+	"Process player control": {
+		"prefix": "(v3) Process Player Control",
+		"body": "ProcessPlayerControl()\n",
+		"description": "Handles control inputs"
+	},
+
+	"Process player collision": {
+		"prefix": "(v3) Player Tile Collision",
+		"body": "PlayerTileCollision()\n",
+		"description": "Handles tile collision of player"
+	},
+
+	"Check player collision w/ objects":{
+		"prefix": "(v3) Player Object Collision",
+		"body": "PlayerObjectCollision(${3|C_TOUCH,C_BOX,C_BOX2,C_PLATFORM|}, ${4:int left HitBox}, ${5:int top HitBox}, ${6:int right HitBox}, ${7:int bottom HitBox})\n",
+		"description": [
+			"Checks for a collision with the player",
+			"\rusing the hitbox values passed.\n",
+			"\rCheckResult will be 0 if there wasn't collision",
+			"\rIf C_TOUCH is used, any collision will be 1.",
+			"\rIf C_BOX/C_BOX2 is used, CheckResult will be set to:",
+			"\r1(Floor), 2(LWall), 3(RWall) or 4(Roof),",
+			"\rdepending of collision.",
+			"\rIf C_PLATFORM is used, only top collision will set",
+			"\rCheckResult to 1."
+		]
+	},
+
+	"Process Object Control": {
+		"prefix": "(v4) Process Object Control",
+		"body": "ProcessObjectControl()\n",
+		"description": "Handles control inputs"
+	},
+
+	"Process Object Collision": {
+		"prefix": "(v4) Process Object Movement",
+		"body": "ProcessObjectMovement()\n",
+		"description": "Handles tile collision of an object\n\r(used almost only for player)"
+	},
+
+	"Check object collision w/ other object":{
+		"prefix": "(v4) Box Collision Test",
+		"body": "BoxCollisionTest(${3|C_TOUCH,C_SOLID,C_SOLID2,C_PLATFORM|}, ${4:int thisObject}, ${5:int thisLeft}, ${6:int thisTop}, ${7:int thisRight}, ${8:int thisBottom}, ${9:int otherObject}, ${10:int otherLeft}, ${11:int otherTop}, ${12:int otherRight}, ${13:int otherBottom})\n",
+		"description": [
+			"Checks for collision thisObject and otherObject",
+			"\rusing the hitbox values passed.\n",
+			"\rCheckResult will be 0 if there wasn't collision",
+			"\rIf C_TOUCH is used, any collision will be 1.",
+			"\rIf C_SOLID/C_SOLID2 is used, CheckResult will be set to:",
+			"\r1(Floor), 2(LWall), 3(RWall) or 4(Roof),",
+			"\rdepending of collision.",
+			"\rIf C_PLATFORM is used, only top collision will set",
+			"\rCheckResult to 1.\n",
+			"\rHitbox values can be set to 0x10000 and use",
+			"\rthe object's active hitbox instead."
+		]
+	},
+
+	"Check object collision w/ tiles":{
+		"prefix": "Object Tile Collision",
+		"body": "ObjectTileCollision(${3:int CSide}, ${4:int xOffset}, ${5:int yOffset}, ${6:int cPlane})\n",
+		"description": [
+			"Tries to collide with the FG layer",
+			"\rbased on the position of iXPos + xOffset, iYPos + yOffset.",
+			"\rSets CheckResult to true if there was a collision,",
+			"\rotherwise it will be false.\n",
+			"\rThis function is best used to check if a tile is there,\n\rnot to move along it\n",
+			"\rCSides are 0(CSIDE_FLOOR),1(CSIDE_LWALL),2(CSIDE_RWALL),\n\rand 3(CSIDE_RWALL).",
+			"\r(Not confuse them with CModes)"
+		]
+	},
+
+	"Check object grip w/ tiles":{
+		"prefix": "Object Tile Grip",
+		"body": "ObjectTileGrip(${3:int CSide}, ${4:int xOffset}, ${5:int yOffset}, ${6:int cPlane})\n",
+		"description": [
+			"Tries to collide with the FG layer",
+			"\rbased on the position of iXPos + xOffset, iYPos + yOffset.",
+			"\rSets CheckResult to true if there was a collision,",
+			"\rotherwise it will be false.\n",
+			"\rThis function is best used to handle moving along surfaces",
+			"\rCSides are 0(CSIDE_FLOOR),1(CSIDE_LWALL),2(CSIDE_RWALL),\n\rand 3(CSIDE_RWALL).",
+			"\r(Not confuse them with CModes)"
+		]
+	},
+
+	"Set object range":{
+		"prefix": "(v4) Set Object Range",
+		"body": "SetObjectRange(${3:int width})\n",
+		"description": [
+			"Changes internal bounds, used mainly so attract mode looks the same",
+			"Regardless of current screen width"
+		]
+	},
+
+	"Get object value":{
+		"prefix": "(v4) Get Object Value",
+		"body": "GetObjectValue(${3:var result}, ${4:int valueID}, ${5:int entitySlot})\n",
+		"description": "Gets the Object[entitySlot].Value\n\rat valueID and stores it in result"
+	},
+
+	"Set object value":{
+		"prefix": "(v4) Set Object Value",
+		"body": "SetObjectValue(${3:int value}, ${4:int valueID}, ${5:int entitySlot})\n",
+		"description": "Sets the Object[entitySlot].Value\n\rat valueID to the value of value"
+	},
+
+	"Copy object":{
+		"prefix": "(v4) Copy Object",
+		"body": "CopyObject(${3:int destSlot}, ${4:int srcSlot}, ${5:int count})\n",
+		"description": "Copies count objects from\n\rsrcSlot to destSlot"
+	},
+
+	"Load Stage":{
+		"prefix": "Load Stage",
+		"body": "LoadStage()\n",
+		"description": "Loads a stage based on\n\rStage.ListPos and Stage.ActiveList"
+	},
+
+	"Set Layer Deformation":{
+		"prefix": "Set Layer Deformation",
+		"body": "SetLayerDeformation(${3:int deformID}, ${4:int deformA}, ${5:int deformB}, ${6:int type}, ${7:int offset}, ${8:int count})\n",
+		"description": [
+			"Sets the deformation of the",
+			"\rdeformation data array of deformID",
+			"\rbased on the deform values"
+		]
+	},
+
+	"Get tile layer entry":{
+		"prefix": "Get TileLayer Entry",
+		"body": "GetTileLayerEntry(${3:var chunkStore}, ${4:int layer}, ${5:int chunkX}, ${6:int chunkY})\n",
+		"description": [
+			"Gets the chunkID of the chunk at",
+			"\rchunkX,chunkY on tilelayer layer",
+			"\rand stores it in chunkStore"
+		]
+	},
+
+	"Set tile layer entry":{
+		"prefix": "Set TileLayer Entry",
+		"body": "SetTileLayerEntry(${3:int value}, ${4:int layer}, ${5:int chunkX}, ${6:int chunkY})\n",
+		"description": [
+			"Sets the chunkID of the chunk at",
+			"\rchunkX,chunkY on tilelayer layer",
+			"\rand sets the index to value"
+		]
+	},
+
+	"Get 16x16 tile info":{
+		"prefix": "Get 16x16Tile Info",
+		"body": "Get16x16TileInfo(${3:int store}, ${4:int tileX}, ${5:int tileY}, ${6:int infoType})\n",
+		"description": [
+			"Gets the info of infoType of the tile at",
+			"tileX, tileY and stores it in store\n",
+			"\rthe IDs for info tile are:",
+			"0 - TILEINFO_INDEX",
+			"1 - TILEINFO_DIRECTION",
+			"2 - TILEINFO_VISUALPLANE",
+			"3 - TILEINFO_SOLIDITYA",
+			"4 - TILEINFO_SOLIDITYB",
+			"5 - TILEINFO_FLAGSA",
+			"6 - TILEINFO_ANGLEA",
+			"7 - TILEINFO_FLAGSB",
+			"8 - TILEINFO_ANGLEB",
+			"\ris recommended to make aliases for the IDs",
+			"\rfor a cleaner code"
+		]
+	},
+
+	"Set 16x16 tile info":{
+		"prefix": "Set 16x16Tile Info",
+		"body": "Set16x16TileInfo(${3:int value}, ${4:int tileX}, ${5:int tileY}, ${6:int infoType})\n",
+		"description": [
+			"Sets the info of infoType of the tile at",
+			"tileX, tileY based on value\n",
+			"the IDs for info tile are:",
+			"0 - TILEINFO_INDEX",
+			"1 - TILEINFO_DIRECTION",
+			"2 - TILEINFO_VISUALPLANE",
+			"3 - TILEINFO_SOLIDITYA",
+			"4 - TILEINFO_SOLIDITYB",
+			"5 - TILEINFO_FLAGSA",
+			"6 - TILEINFO_ANGLEA",
+			"7 - TILEINFO_FLAGSB",
+			"8 - TILEINFO_ANGLEB",
+			"\ris recommended to make aliases for the IDs",
+			"\rfor a cleaner code"
+		]
+	},
+
+	"Copy 16x16 tile":{
+		"prefix": "Copy 16x16Tile",
+		"body": "Copy16x16Tile(${3:int destTile}, ${4:int sourceTile})\n",
+		"description": [
+			"Copies the tileset image data",
+			"\rof sourceTile into destTile\n",
+			"\rused for animated tiles"
+		]
+	},
+
+	"Check current stage folder":{
+		"prefix": "(v4) Check Current Stage Folder",
+		"body": "CheckCurrentStageFolder(\"${3:string checkFolder}\")\n",
+		"description": "set CheckResult to true if\n\rthe loaded stage's folder matches checkFolder"
+	},
+
+	"Check touch screen input":{
+		"prefix": "Check Touch Rect",
+		"body": "CheckTouchRect(${3:int X1}, ${4:int Y1}, ${5:int X2}, ${6:int Y2})\n",
+		"description": "Check if there was a touch input between\n\rthe inputted coordinates"
+	},
+
+	"Sin":{
+		"prefix": "Sin-MathFunc",
+		"body": "Sin(${4:int store}, ${5:int angle})\n",
+		"description": "Gets the value from sin512\n\rlookup table based on angle and sets it in store"
+	},
+
+	"Cos":{
+		"prefix": "Cos-MathFunc",
+		"body": "Cos(${4:int store}, ${5:int angle})\n",
+		"description": "Gets the value from cos512\n\rlookup table based on angle and sets it in store"
+	},
+
+	"Sin256":{
+		"prefix": "Sin256-MathFunc",
+		"body": "Sin256(${4:int store}, ${5:int angle})\n",
+		"description": "Gets the value from sin256\n\rlookup table based on angle and sets it in store"
+	},
+	
+	"Cos256":{
+		"prefix": "Cos256-MathFunc",
+		"body": "Cos256(${4:int store}, ${5:int angle})\n",
+		"description": "Gets the value from cos256\n\rlookup table based on angle and sets it in store"
+	},
+
+	"Arctangent":{
+		"prefix": "ATan2-MathFunc",
+		"body": "ATan2(${3:int store}, ${4:int x}, ${5:int y})\n",
+		"description": "Performs an arctan operation\n\rusing x and y, storing the result in store"
+	},
+
+	"Get Bit":{
+		"prefix": "Get Bit",
+		"body": "GetBit(${3:var store}, ${4:int value}, ${5:int bitPos})\n",
+		"description": "Gets bit at index bitPos from value\n\rand stores it in store"
+	},
+
+	"Set Bit":{
+		"prefix": "Set Bit",
+		"body": "SetBit(${3:int value}, ${4:int pos}, ${5:bit})\n",
+		"description": "Sets bit at index pos to set\n\rand updates value accordingly"
+	},
+	
+	"Get random value":{
+		"prefix": "Rand",
+		"body": "Rand(${3:var store}, ${4:int max})\n",
+		"description": "Gets a random value from 0 to max(not included)\n\rand stores it in store"
+	},
+
+	"Negate a value":{
+		"prefix": "Not",
+		"body": "Not(${3:var value})\n",
+		"description": "Performs a NOT operation on value\n\rand updates it (value = -Value)"
+	},
+	
+	"Absolute value":{
+		"prefix": "(v4) Abs",
+		"body": "Abs(${3:var value})\n",
+		"description": "Gets the absolute number of value\n\rand updates it"
+	},
+
+	"Get table value":{
+		"prefix": "(v4) Get Table Value",
+		"body": "GetTableValue(${3:var store}, ${4:int index}, ${5:table})\n",
+		"description": "Gets a value from table at index\n\rand stores it in store"
+	},
+
+	"Set table value":{
+		"prefix": "(v4) Set Table Value",
+		"body": "SetTableValue(${3:int value}, ${4:int index}, ${5:table})\n",
+		"description": "Sets the value in table at index to value"
+	},
+
+	"Interpolate":{
+		"prefix": "Interpolate",
+		"body": "Interpolate(${3:var store}, ${4:int x}, ${5:int y}, ${6:int percent})\n",
+		"description": [
+			"Linearly interpolates (LERPs)",
+			"\rx and y by percent and stores",
+			"\rthe result in store.\n",
+			"\rpercent is 0 through 256"
+		]
+	},
+
+	"Double interpolation":{
+		"prefix": "InterpolateXY",
+		"body": "InterpolateXY(${3:var storeX}, ${4:var storeY}, ${5:int aX}, ${6:int aY}, ${7:int bX}, ${8:int bY}, ${9:int percent})\n",
+		"description": "InterpolateXY does 2 at once\n\rfor points (aX, aY) and (bX, bY)"
+	},
+
+	"Set identity matrix":{
+		"prefix": "Set Identity Matrix",
+		"body": "SetIdentityMatrix(${3:mat matrix})\n",
+		"description": "Sets the matrix of matID\n\rto the identity state"
+	},
+
+	"Multiply matrix":{
+		"prefix": "Matrix Multiply",
+		"body": "MatrixMultiply(${3:mat matrixA}, ${4:mat matrixB})\n",
+		"description": "Multiplies matrixA by matrixB\n\rand stores the result in matrixA"
+	},
+
+	"Translate matrix XYZ":{
+		"prefix": "Translate Matrix XYZ",
+		"body": "MatrixTranslateXYZ(${3:mat matrix}, ${4:int x}, ${5:int y}, ${6:int z})\n",
+		"description": "Translates matrix to x,y,z\n\rall shifted 8 bits (0x100 = 1.0)"
+	},
+
+	"Scale matrix XYZ":{
+		"prefix": "Scale Matrix XYZ",
+		"body": "MatrixScaleXYZ(${3:mat matrix}, ${4:int x}, ${5:int y}, ${6:int z})\n",
+		"description": "Scales matrix to x,y,z\n\rall shifted 8 bits (0x100 = 1.0)"
+	},
+
+	"Rotate matrix X, Y or Z":{
+		"prefix": "Matrix Rotate",
+		"body": "${3|MatrixRotateX,MatrixRotateY,MatrixRotateZ|}(${4:mat matrix}, ${5:int angle})\n",
+		"description": [
+			"Rotates matrix to angle on the specified axis",
+			"\rAngles are 512-based, similar to sin/cos"
+		]
+	},
+	
+	"Rotate matrix X, Y and Z":{
+		"prefix": "Matrix Rotate XYZ",
+		"body": "MatrixRotateXYZ(${4:mat matrix}, ${5:int x}, ${6:int y}, ${7:int z})\n",
+		"description": [
+			"Rotates matrix to angle on the specified axis",
+			"\rAngles are 512-based, similar to sin/cos"
+		]
+	},
+
+	"Inverse matrix":{
+		"prefix": "(v4) Matrix Inverse",
+		"body": "MatrixInverse(${3:int matrix})\n",
+		"description": "Performs an inversion on matrix's values"
+	},
+
+	"Transform vertices":{
+		"prefix": "Transform Vertices",
+		"body": "TransformVertices(${3:mat matrix}, ${4:int startIndex}, ${5:int endIndex})\n",
+		"description": "Transform all vertices from\n\rstartIndex to endIndex using matrix"
+	},
+
+	"Draw 3D Scene":{
+		"prefix": "Draw 3DScene",
+		"body": "Draw3DScene()\n",
+		"description": "Draws the active 3DScene data to the screen"
+	},
+
+	"Load text font":{
+		"prefix": "(v3) Load Text Font",
+		"body": "LoadTextFont(\"${3:string filePath}\")\n",
+		"description": "Loads a bitmap font from filePath\n\rfor use with textMenus"
+	},
+
+	"Load text file":{
+		"prefix": "Load Text File",
+		"body": "LoadTextFile(${3|MENU_1,MENU_2|}, \"${4:string filePath}\", ${5:byte mapCode})\n",
+		"description": "Loads a menu based on the file\n\rloaded from filePath"
+	},
+
+	"Setup menu":{
+		"prefix": "Setup Menu",
+		"body": "SetupMenu(${3|MENU_1,MENU_2|}, ${4:int rowCount}, ${5:int selectionCount}, ${6:int alignment})\n",
+		"description": [
+			"Sets up menu with rowCount rows,",
+			"\rselectionCount active selections",
+			"\rand aligning to alignment"
+		]
+	},
+
+	"Add text menu entry":{
+		"prefix": "Add Menu Entry",
+		"body": "AddMenuEntry(${3|MENU_1,MENU_2|}, \"${4:string text}\", ${5:bool highlightEntry})\n",
+		"description": [
+			"Adds an entry to menu with the",
+			"\rcontents of text, and highlighted",
+			"\rif highlightEntry is set to true"
+		]
+	},
+
+	"Edit text menu entry":{
+		"prefix": "Edit Menu Entry",
+		"body": "EditMenuEntry(${3|MENU_1,MENU_2|}, \"${4:string text}\", ${5:int rowID}, ${6:bool highlightEntry})\n",
+		"description": [
+			"Edits an entry to menu with the",
+			"\rcontents of text in rowID, and highlighted",
+			"\rif highlightEntry is set to true"
+		]
+	},
+
+	"Get text info":{
+		"prefix": "Get Text Info",
+		"body": "GetTextInfo(${3:var store}, ${4|MENU_1,MENU_2|}, ${5:int type}, ${6:int index}, ${7:int offset})\n",
+		"description": [
+			"Gets the data of type from menu using index,",
+			"using offset if the type is TEXTINFO_TEXTDATA",
+			"\rtype ids are:",
+			"TEXTINFO_TEXTDATA",
+			"TEXTINFO_TEXTSIZE",
+			"TEXTINFO_ROWCOUNT"
+		]
+	},
+
+	"Draw menu":{
+		"prefix": "Draw Menu",
+		"body": "DrawMenu(${3|MENU_1,MENU_2|}, ${4:int XPos}, ${5:int YPos})\n",
+		"description": "Draws menu to XPos & YPos\n\rrelative to the screen"
+	},
+
+	"Draw text":{
+		"prefix": "(v3) Draw Text",
+		"body": "DrawText(${3|MENU_1,MENU_2|}, ${4:int XPos}, ${5:int YPos}, ${6:int scale}, ${7:int spacing}, ${8:int rowStart}, ${9:int rowCount})\n",
+		"description": [
+			"Draws the contents of rowCount rows",
+			"\rstarting from rowStart in menu to XPos & YPos",
+			"\rrelative to the screen, using spacing pixels",
+			"\rbetween them and using scale scaling"
+		]
+	},
+
+	"Get version number":{
+		"prefix": "Get Version Number",
+		"body": "GetVersionNumber(${3|MENU_1,MENU_2|}, ${4:bool highlight})\n",
+		"description": "Adds a text entry with the game's version\n\ras the text, highlighted if highlight is set"
+	},
+
+	"Send engine callback":{
+		"prefix": "(v3) Engine Callback",
+		"body": "EngineCallback(${3:int callbackFuncID})\n",
+		"description": "Sends callback to engine"
+	},
+
+	"Call native function":{
+		"prefix": "(v4) Call Native Function",
+		"body": "CallNativeFunction(${3:int callbackFuncID})\n",
+		"description": "Sends callback to engine"
+	},
+
+	"Call native function w/ two parameters":{
+		"prefix": "(v4) Call Native Function 2",
+		"body": "CallNativeFunction2(${3:int callbackFuncID}, ${4:int param1}, ${5:int param2})\n",
+		"description": "Sends callback to engine with 2 parameters"
+	},
+
+	"Call native function w/ four parameters":{
+		"prefix": "(v4) Call Native Function 4",
+		"body": "CallNativeFunction4(${3:int callbackFuncID}, ${4:int param1}, ${5:int param2}, ${6:int param3}, ${7:int param4})\n",
+		"description": "Sends callback to engine with 4 parameters"
+	},
+
+	"Read saved RAM":{
+		"prefix": "Read SaveRAM",
+		"body": "ReadSaveRAM()\n",
+		"description": [
+			"reads the contents of the save file",
+			"\ron disk into SaveRAM (overwrites any existing values)"
+		]
+	},
+
+	"Write saved RAM":{
+		"prefix": "Write SaveRAM",
+		"body": "WriteSaveRAM()\n",
+		"description": "writes the contents of the save file on disk"
+	},
+
+	"Load online menu":{
+		"prefix": "(v3) Load Online Menu",
+		"body": "LoadOnlineMenu(${3:int menuID})\n",
+		"description": "Loads the data for the specified online menu\n\rOnly useful in the original CD 2011"
+	},
+
+	"Set achievement":{
+		"prefix": "(v3) Set Achievement",
+		"body": "SetAchievement(${3:int id}, ${4:int status})\n",
+		"description": [
+			"Sets the status of the achievement\n\rwith index of id to status",
+			"(This function become a callback in v4)"
+		]
+	},
+
+	"Set leaderboard":{
+		"prefix": "(v3) Set Leader Board",
+		"body": "SetLeaderBoard(${3:int id}, ${4:int entry})\n",
+		"description": "Sets the entry of the leaderboard\n\rwith index of id to entry"
+	},
+
+	"Print to log":{
+		"prefix": "(v4) Print",
+		"body": "Print(${3:message}, ${4:bool isInt}, ${5:bool useEndLine})\n",
+		"description": [
+			"prints a message to log, the message can be a string or a regular value",
+			"depending of isInt"
+		]
+	}
+}
