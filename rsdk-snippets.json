@@ -173,11 +173,11 @@
 	"Tips":{
 		"prefix": "RetroScript Tips",
 		"body": [
-			"// -Indexed arrays can have a '+' or '-' added to refer to the next or previous in the level's object list",
+			"// -Indexed arrays can have a '+' or '-' added to refer to the next or previous object in the level object list",
 			"\r// -While their name give an indication of for what they should be used, the purpose of a variable is not set in stone",
-			"\r// -Be careful with usage of TempValue's, since they are used for all objects, a constant missuse of them can break behaviour of objects",
+			"\r// -Be careful with usage of TempValues, since they are used for all objects, a constant miss-use of them can break behaviour of objects",
 			"\r// -Object.XPos and Object.YPos use floating points, the last 4 zeroes on the value are sub-pixel values",
-			"\r// -Due to how the engine works, using iXPos or iYPos at any point will truncate the sub-pixel value of XPos and YPos in the object"
+			"\r// -Due to how the engine works, using iXPos or iYPos at any point will truncate the sub-pixel value of XPos and YPos in the object\n"
 		],
 		"description": "Just some general tips"
 
@@ -195,7 +195,7 @@
 			"#alias 15   : CALLBACK_STAFF_CREDITS",
 			"",
 			"#alias 4097 : CALLBACK_SET1P",
-			"#alias 4098 : CALLBACK_SET2P"
+			"#alias 4098 : CALLBACK_SET2P\n"
 		],
 		"description": "Add alias in script of the most used engine states\n\rplus SET1P and 2P, which helps adding an AI player"
 	},
@@ -212,7 +212,7 @@
 			"#alias 5 : TILEINFO_FLAGSA",
 			"#alias 6 : TILEINFO_ANGLEA",
 			"#alias 7 : TILEINFO_FLAGSB",
-			"#alias 8 : TILEINFO_ANGLEB"
+			"#alias 8 : TILEINFO_ANGLEB\n"
 		],
 		"description": "Add alias in script for usage in TileInfo funcs\n\rFLAGSB and ANGLEB are read-only"
 	},
@@ -224,7 +224,7 @@
 			"#alias 0 : FACE_TEXTURED_3D",
 			"#alias 1 : FACE_TEXTURED_2D",
 			"#alias 2 : FACE_COLOURED_3D",
-			"#alias 3 : FACE_COLOURED_2D"
+			"#alias 3 : FACE_COLOURED_2D\n"
 		],
 		"description": "Add alias in script for usage in FaceBuffer.Flag"
 	},
@@ -236,7 +236,7 @@
 			"#alias 0 : CSIDE_FLOOR",
 			"#alias 1 : CSIDE_LWALL",
 			"#alias 2 : CSIDE_RWALL",
-			"#alias 3 : CSIDE_ROOF"
+			"#alias 3 : CSIDE_ROOF\n"
 		],
 		"description": "Add alias in script for usage with ObjectTileCollision"
 	},
@@ -248,7 +248,7 @@
 			"#alias 0 : CMODE_FLOOR",
 			"#alias 1 : CMODE_LWALL",
 			"#alias 2 : CMODE_ROOF",
-			"#alias 3 : CMODE_RWALL"
+			"#alias 3 : CMODE_RWALL\n"
 		],
 		"description": "Add alias in script for usage with ObjectTileCollision"
 	},
@@ -262,7 +262,7 @@
 			"#alias 2 : PRIORITY_ALWAYS         // Object will always update",
 			"#alias 3 : PRIORITY_XBOUNDS        // Object updates within 128 pixels of the screen border left/right",
 			"#alias 4 : PRIORITY_BOUNDS_DESTROY // Object updates within 128 pixels of the screen border left/right, object will be set to Blank Object if the check fails",
-			"#alias 5 : PRIORITY_INACTIVE       // Object never updates"
+			"#alias 5 : PRIORITY_INACTIVE       // Object never updates\n"
 		],
 		"description": "Add alias in script for usage with Object.Priority"
 	},
@@ -275,7 +275,7 @@
 			"#alias 1 : INK_BLEND  // Uses half transparency",
 			"#alias 2 : INK_ALPHA  // Uses transparency value of Object.Alpha",
 			"#alias 3 : INK_ADD    // Uses transparency value of Object.Alpha, and a bright tint",
-			"#alias 4 : INK_SUB    // Uses transparency value of Object.Alpha, and a dark tint"
+			"#alias 4 : INK_SUB    // Uses transparency value of Object.Alpha, and a dark tint\n"
 		],
 		"description": "Add alias in script for usage with Object.InkEffect"
 	},
@@ -293,9 +293,22 @@
 			"#alias  0 : GAMEMODE_NOSAVE",
 			"#alias  1 : GAMEMODE_SAVEGAME",
 			"#alias  2 : GAMEMODE_TIMEATTACK",
-			"#alias  3 : GAMEMODE_DEMOMODE"
+			"#alias  3 : GAMEMODE_DEMOMODE\n"
 		],
 		"description": "Add alias in script for misc stuff"
+	},
+	
+	"Add v3 camera aliases":{
+		"prefix": "(v3) Camera aliases",
+		"body": [
+			"// Camera aliases",
+			"#alias  0 : CAMERASTYLE_FOLLOW",
+			"#alias  1 : CAMERASTYLE_EXTENDED",
+			"#alias  2 : CAMERASTYLE_EXTENDED_OFFSET_L",
+			"#alias  3 : CAMERASTYLE_EXTENDED_OFFSET_R",
+			"#alias  4 : CAMERASTYLE_HLOCKED\n"
+		],
+		"description": "Add alias in script for camera styles"
 	},
 
 	"Add v4 tile info aliases":{
@@ -310,7 +323,7 @@
 			"private alias 5 : TILEINFO_FLAGSA",
 			"private alias 6 : TILEINFO_ANGLEA",
 			"private alias 7 : TILEINFO_FLAGSB",
-			"private alias 8 : TILEINFO_ANGLEB"
+			"private alias 8 : TILEINFO_ANGLEB\n"
 		],
 		"description": "Add alias in script for usage in TileInfo funcs\n\rFLAGSB and ANGLEB are read-only"
 	},
@@ -326,7 +339,7 @@
 			"private alias 4 : FACE_FADED",
 			"private alias 5 : FACE_TEXTURED_C",
 			"private alias 6 : FACE_TEXTURED_D",
-			"private alias 7 : FACE_SPRITE3D"
+			"private alias 7 : FACE_SPRITE3D\n"
 		],
 		"description": "Add alias in script for usage in FaceBuffer.Flag"
 	},
@@ -338,7 +351,7 @@
 			"private alias 0 : CSIDE_FLOOR",
 			"private alias 1 : CSIDE_LWALL",
 			"private alias 2 : CSIDE_RWALL",
-			"private alias 3 : CSIDE_ROOF"
+			"private alias 3 : CSIDE_ROOF\n"
 		],
 		"description": "Add alias in script for usage with ObjectTileCollision"
 	},
@@ -350,7 +363,7 @@
 			"private alias 0 : CMODE_FLOOR",
 			"private alias 1 : CMODE_LWALL",
 			"private alias 2 : CMODE_ROOF",
-			"private alias 3 : CMODE_RWALL"
+			"private alias 3 : CMODE_RWALL\n"
 		],
 		"description": "Add alias in script for usage with ObjectTileCollision"
 	},
@@ -366,30 +379,98 @@
 			"private alias 4 : PRIORITY_BOUNDS_DESTROY // Object updates within 128 pixels of the screen border left/right, object will be set to Blank Object if the check fails",
 			"private alias 5 : PRIORITY_INACTIVE       // Object never updates",
 			"private alias 6 : PRIORITY_BOUNDS_SMALL   // Object updates within 32 pixels of the screen border left/right and 128 pixels up/down",
-			"private alias 7 : PRIORITY_ACTIVE_SMALL   // Object will always update, unless paused/frozen. The bounds ofobject.outOfBounds are much smaller"
-			
+			"private alias 7 : PRIORITY_ACTIVE_SMALL   // Object will always update, unless paused/frozen. The bounds ofobject.outOfBounds are much smaller\n"
 		],
-		"description": "Add alias in script for usage with Object.Priority"
+		"description": "Add alias in script for usage with object.priority"
 	},
 
 	"Add v4 inkeffect aliases":{
-		"prefix": "(v4) InkEffect aliases",
+		"prefix": "(v4) inkEffect aliases",
 		"body": [
 			"// Ink Effect Aliases",
 			"private alias 0 : INK_NONE   // Disables transparency",
 			"private alias 1 : INK_BLEND  // Uses half transparency",
 			"private alias 2 : INK_ALPHA  // Uses transparency value of Object.Alpha",
 			"private alias 3 : INK_ADD    // Uses transparency value of Object.Alpha, and a bright tint",
-			"private alias 4 : INK_SUB    // Uses transparency value of Object.Alpha, and a dark tint"
+			"private alias 4 : INK_SUB    // Uses transparency value of Object.Alpha, and a dark tint\n"
 		],
-		"description": "Add alias in script for usage with Object.InkEffect"
+		"description": "Add alias in script for usage with object.inkEffect"
+	},
+
+	"Add v4 direction aliases":{
+		"prefix": "(v4) direction aliases",
+		"body": [
+			"// Direction Aliases",
+			"private alias 0 : FLIP_NONE  // Sprite's normal direction",
+			"private alias 1 : FLIP_X     // Sprite flipped horizontally",
+			"private alias 2 : FLIP_Y     // Sprite flipped vertically",
+			"private alias 3 : FLIP_XY    // Sprite flipped horizontally and vertically\n"
+		],
+		"description": "Add alias in script for usage with object.direction."
+	},
+
+	"Add v4 engine state aliases":{
+		"prefix": "(v4) engine state aliases",
+		"body": [
+			"// Engine State Aliases",
+			"private alias 0 : ENGINE_DEVMENU",
+			"private alias 1 : ENGINE_MAINGAME",
+			"private alias 2 : ENGINE_INITDEVMENU",
+			"private alias 3 : ENGINE_WAIT",
+			"private alias 4 : ENGINE_SCRIPTERROR",
+			"private alias 5 : ENGINE_INITPAUSE",
+			"private alias 6 : ENGINE_EXITPAUSE",
+			"private alias 7 : ENGINE_ENDGAME",
+			"private alias 8 : ENGINE_RESETGAME\n"
+		],
+		"description": "Add alias in script for usage with object.direction"
+	},
+
+	"Add v4 collision aliases":{
+		"prefix": "(v4) collision aliases",
+		"body": [
+			"// Collision Aliases",
+			"private alias 0 : COL_NONE",
+			"private alias 1 : COL_TOP",
+			"private alias 2 : COL_LEFT",
+			"private alias 3 : COL_RIGHT\n"
+		],
+		"description": "Add alias in script for collision."
+	},
+
+	"Add v4 misc aliases":{
+		"prefix": "(v4) Misc aliases",
+		"body": [
+			"// Misc aliases",
+			"private alias  0 : GRAVITY_GROUND",
+			"private alias  1 : GRAVITY_AIR\n",
+			"private alias  0 : PATH_A",
+			"private alias  1 : PATH_B\n",
+			"private alias -1 : CONTROLMODE_NONE",
+			"private alias  0 : CONTROLMODE_NORMAL\n",
+			"private alias  0 : GROUP_ALL\n"
+		],
+		"description": "Add alias in script for misc stuff"
+	},
+
+	"Add v4 camera aliases":{
+		"prefix": "(v4) Camera aliases",
+		"body": [
+			"// Camera aliases",
+			"private alias  0 : CAMERASTYLE_FOLLOW",
+			"private alias  1 : CAMERASTYLE_EXTENDED",
+			"private alias  2 : CAMERASTYLE_EXTENDED_OFFSET_L",
+			"private alias  3 : CAMERASTYLE_EXTENDED_OFFSET_R",
+			"private alias  4 : CAMERASTYLE_HLOCKED\n"
+		],
+		"description": "Add alias in script for camera styles"
 	},
 
 	"Alias":{
 		"prefix": "Alias",
 		"body": "${3|#alias,private alias,public alias|} ${4:var} : ${5:alias}\n",
 		"description": [
-			"Creates a new alias,it will",
+			"Creates a new alias, it will",
 			"\rbe replaced with var on compile time",
 			"\r#alias is the format used in v3 and is always private",
 			"\rpublic/private alias is v4's"
@@ -399,7 +480,7 @@
 	"v3 Platform Types":{
 		"prefix": "(v3) #Platform",
 		"body": [
-			"#platform: ${3|Standard,Mobile,Use_Standalone,Use_Origins,SW_Renderer,HW_Renderer,Use_Haptics,No_Haptics|}",
+			"#platform: ${3|Standard,Mobile,Use_Standalone,Use_Origins,SW_Renderer,HW_Renderer,Use_Haptics,No_Haptics,Use_Decomp|}",
 			"\t$0",
 			"#endplatform\n"
 			],
@@ -413,7 +494,7 @@
 	"v4 Platform Types":{
 		"prefix": "(v4) #Platform",
 		"body": [
-			"#platform: ${4|STANDARD,MOBILE,USE_STANDALONE,USE_ORIGINS,SW_RENDERING,HW_RENDERING,USE_F_FEEDBACK,NO_F_FEEDBACK|}",
+			"#platform: ${4|STANDARD,MOBILE,USE_STANDALONE,USE_ORIGINS,SW_RENDERING,HW_RENDERING,USE_F_FEEDBACK,NO_F_FEEDBACK,USE_NETWORKING,USE_DECOMP|}",
 			"\t$0",
 			"#endplatform\n"
 		],
@@ -512,7 +593,7 @@
 	"for-each statement": {
 		"prefix": "(v4) foreach-statement",
 		"body": [
-			"foreach(TypeName[${3:objectName}], ${4:int store}, ${5|ALL_ENTITIES,ACTIVE_ENTITIES,GROUP_PLAYERS|})",
+			"foreach(TypeName[${3:objectName}], ${4:int store}, ${5|ALL_ENTITIES,ACTIVE_ENTITIES|})",
 			"\t$0",
 			"next"
 		],
@@ -860,7 +941,7 @@
 
 	"Get Palette Entry":{
 		"prefix": "(v4) Get Palette Entry",
-		"body": "GetPaletteEntry(${3:int palBankID}, ${4:int palIndex}, ${5:int palStore})\n",
+		"body": "GetPaletteEntry(${3:int palBankID}, ${4:int palIndex}, ${5:var palStore})\n",
 		"description": [
 			"Gets the palette entry in palBankID",
 			"\rat palIndex and stores it in palStore"
@@ -881,16 +962,16 @@
 
 	"v3 Copy Palette":{
 		"prefix": "(v3) Copy Palette",
-		"body": "CopyPalette(${3:int sourcePal}, ${4:int destPal})\n",
-		"description": "Copies sourcePal into destPal"
+		"body": "CopyPalette(${3:int srcPal}, ${4:int destPal})\n",
+		"description": "Copies srcPal into destPal"
 	},
 
 	"v4 Copy Palette":{
 		"prefix": "(v4) Copy Palette",
-		"body": "CopyPalette(${3:int sourcePal}, ${4:int sourcePalStart}, ${5:int destPal}, ${6:int destPalStart}, ${7:int count})\n",
+		"body": "CopyPalette(${3:int srcPal}, ${4:int srcPalStart}, ${5:int destPal}, ${6:int destPalStart}, ${7:int count})\n",
 		"description": [
-			"Copies count colors from sourcePal",
-			"\rstarting at sourcePalStart.",
+			"Copies count colors from srcPal",
+			"\rstarting at srcPalStart.",
 			"\rTo destPal, starting at destPalStart"
 		]
 	},
@@ -1023,20 +1104,20 @@
 
 	"Get object value":{
 		"prefix": "(v4) Get Object Value",
-		"body": "GetObjectValue(${3:var store}, ${4:int index}, ${5:int objectPos})\n",
-		"description": "Gets the Object[objectPos].Value\n\rat index and stores it in store"
+		"body": "GetObjectValue(${3:var result}, ${4:int valueID}, ${5:int entitySlot})\n",
+		"description": "Gets the Object[entitySlot].Value\n\rat valueID and stores it in result"
 	},
 
 	"Set object value":{
 		"prefix": "(v4) Set Object Value",
-		"body": "SetObjectValue(${3:int value}, ${4:int index}, ${5:int objectPos})\n",
-		"description": "Sets the Object[objectPos].Value\n\rat index to the value of value"
+		"body": "SetObjectValue(${3:int value}, ${4:int valueID}, ${5:int entitySlot})\n",
+		"description": "Sets the Object[entitySlot].Value\n\rat valueID to the value of value"
 	},
 
 	"Copy object":{
 		"prefix": "(v4) Copy Object",
-		"body": "CopyObject(${3:int startIndex}, ${4:int copyOffset}, ${5:int count})\n",
-		"description": "Copies count objects from\n\rstartIndex to copyOffset"
+		"body": "CopyObject(${3:int destSlot}, ${4:int srcSlot}, ${5:int count})\n",
+		"description": "Copies count objects from\n\rsrcSlot to destSlot"
 	},
 
 	"Load Stage":{
@@ -1196,7 +1277,7 @@
 	"Absolute value":{
 		"prefix": "(v4) Abs",
 		"body": "Abs(${3:var value})\n",
-		"description": "Gets the absolute number of value\n\rand updates value with the new number"
+		"description": "Gets the absolute number of value\n\rand updates it"
 	},
 
 	"Get table value":{
